@@ -1,0 +1,3091 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "6.1.0",
+    "title": "application.wadl",
+    "description": "",
+    "license": {
+      "name": "MIT",
+      "url": "http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/jasperserver/rest_v2/",
+  "securityDefinitions": {},
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/bundles": {
+      "get": {
+        "description": "",
+        "operationId": "getBundles_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "expanded",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "boolean",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{name}": {
+      "get": {
+        "description": "",
+        "operationId": "getCustomDataSourceDefinition_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "updateRole_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "deleteRole_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/import": {
+      "get": {
+        "description": "",
+        "operationId": "getTasksIds_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "Create_handleDirectUpload_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "update",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "skipUserUpdate",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "includeAuditEvents",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "includeAccessEvents",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "includeMonitoringEvents",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "includeServerSettings",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{id}/state": {
+      "get": {
+        "description": "",
+        "operationId": "getStateOfTheTask_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/reports/{reportUnitURI: .+}/inputControls": {
+      "get": {
+        "description": "",
+        "operationId": "getReportInputParameters_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "reportUnitURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "Update_reorderInputControls_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "reportUnitURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "Create_getReportInputParametersViaPost_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "reportUnitURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{inputControlIds: [^;/]+(;[^;/]+)*}": {
+      "get": {
+        "description": "",
+        "operationId": "getReportInputParametersForSpecifiedInputControls_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "inputControlIds",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "reportUnitURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "Create_getReportInputParametersForSpecifiedInputControlsViaPost_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "inputControlIds",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "reportUnitURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/values": {
+      "get": {
+        "description": "",
+        "operationId": "getInputControlsInitialValues_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "freshData",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "reportUnitURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "Create_getInputControlsInitialValuesViaPost_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "freshData",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "reportUnitURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{inputControlIds: [^;/]+(;[^;/]+)*}/values": {
+      "get": {
+        "description": "",
+        "operationId": "getReportInputControlValues_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "freshData",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "inputControlIds",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "reportUnitURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "Create_getReportInputControlValuesViaPost_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "freshData",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "inputControlIds",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "reportUnitURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "description": "",
+        "operationId": "getUsers_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "maxRecords",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "subOrgId",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "includeSubOrgs",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "hasAllRequiredRoles",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "requiredRole",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{name}/attributes": {
+      "get": {
+        "description": "",
+        "operationId": "getAttributesOfUser_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "_embedded",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "putAttributes_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "_embedded",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "deleteAttributes_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{name}/attributes/{attrName}": {
+      "get": {
+        "description": "",
+        "operationId": "getSpecificAttributeOfUser_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "_embedded",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "attrName",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "putAttribute_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "_embedded",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "attrName",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "deleteAttribute_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "_embedded",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "attrName",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/permissions": {
+      "get": {
+        "description": "",
+        "operationId": "getPermissionsEntryPointRoot_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "updatePermissionRoot_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "createPermission_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "deletePermissionsEntryPointRoot_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{uri:.+}": {
+      "get": {
+        "description": "",
+        "operationId": "getPermissionsEntryPoint_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uri",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "updatePermission_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uri",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "deletePermissionsEntryPoint_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uri",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/connections": {
+      "post": {
+        "description": "",
+        "operationId": "createConnection_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{uuid}": {
+      "get": {
+        "description": "",
+        "operationId": "getConnectionDetails_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "modifyConnection_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "removeConnectionDetails_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{uuid}/metadata": {
+      "get": {
+        "description": "",
+        "operationId": "getConnectionMetadata_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/jdbcDrivers": {
+      "get": {
+        "description": "",
+        "operationId": "getJdbcDriversHipermediaRepresentation_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "uploadDriver_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/resources": {
+      "get": {
+        "description": "",
+        "operationId": "getResources_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "folderUri",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "excludeFolder",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "accessType",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "recursive",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": true,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "showHiddenItems",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "forceTotalCount",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "expanded",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "forceFullPage",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "Update_defaultPutHandlerForRoot_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Location",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Disposition",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Description",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "expanded",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "createFolders",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": true,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "overwrite",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "createFileViaFormInRoot_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "createFolders",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": true,
+            "type": "boolean",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "deleteResources_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "resourceUri",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{uri: .+}": {
+      "get": {
+        "description": "",
+        "operationId": "Get_discover_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uri",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "updateFileViaForm_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uri",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "createFileViaForm_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "createFolders",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": true,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "uri",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "deleteResource_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uri",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "description": "",
+        "operationId": "patchResource_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uri",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/serverInfo": {
+      "get": {
+        "description": "",
+        "operationId": "getServerInfo_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/features": {
+      "get": {
+        "description": "",
+        "operationId": "getFeatures_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/version": {
+      "get": {
+        "description": "",
+        "operationId": "getServerVersion_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/edition": {
+      "get": {
+        "description": "",
+        "operationId": "getServerEdition_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/editionName": {
+      "get": {
+        "description": "",
+        "operationId": "getServerEditionName_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/licenseType": {
+      "get": {
+        "description": "",
+        "operationId": "getServerLicenseType_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/build": {
+      "get": {
+        "description": "",
+        "operationId": "getServerBuild_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/expiration": {
+      "get": {
+        "description": "",
+        "operationId": "getServerExpiration_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/dateFormatPattern": {
+      "get": {
+        "description": "",
+        "operationId": "Get_dateFormatPattern_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/datetimeFormatPattern": {
+      "get": {
+        "description": "",
+        "operationId": "Get_datetimeFormatPattern_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/jobs": {
+      "get": {
+        "description": "",
+        "operationId": "getReportJobs_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "reportUnitURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "owner",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "label",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "previousFireTime",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "nextFireTime",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "example",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "numberOfRows",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "sortType",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "isAscending",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "boolean",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "Update_scheduleJob_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "updateJobs_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "replaceTriggerIgnoreType",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "deleteJobs_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{id: \\d+}/state": {
+      "get": {
+        "description": "",
+        "operationId": "getJobState_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int64",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/restart": {
+      "post": {
+        "description": "",
+        "operationId": "Create_scheduleJobsOnceNow_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/calendars": {
+      "get": {
+        "description": "",
+        "operationId": "getCalendarNames_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "calendarType",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/calendars/{calendarName}": {
+      "get": {
+        "description": "",
+        "operationId": "getCalendarByName_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "calendarName",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "putCalendar_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "replace",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "updateTriggers",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "calendarName",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "deleteCalendar_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "calendarName",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{id: \\d+}": {
+      "get": {
+        "description": "",
+        "operationId": "getJobWithProcessedParameters_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int64",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "updateJob_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int64",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "deleteJob_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int64",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/resume": {
+      "post": {
+        "description": "",
+        "operationId": "Create_resume_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/pause": {
+      "post": {
+        "description": "",
+        "operationId": "Create_pause_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{groupId}": {
+      "get": {
+        "description": "",
+        "operationId": "getSettingsGroup_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/reports": {
+      "get": {
+        "description": "",
+        "operationId": "getReportsRuntimeInformation_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "reportURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "jobID",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "jobLabel",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "fireTimeFrom",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "fireTimeTo",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{reportUnitURI: .+}.{outputFormat}": {
+      "get": {
+        "description": "",
+        "operationId": "getReportOutputResource_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "x-jrs-base-url",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "baseUrl",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "pages",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "transformerKey",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "ignorePagination",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "attachmentsPrefix",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "allowInlineScripts",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": true,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "markupType",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "anchor",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "freshData",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "interactive",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": true,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "saveDataSnapshot",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "outputFormat",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "reportUnitURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{executionId}/status": {
+      "get": {
+        "description": "",
+        "operationId": "getReportExecutionStatusObject_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "executionId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "Update_cancelReportExecution_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "executionId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/reportExecutions": {
+      "get": {
+        "description": "",
+        "operationId": "getReportsRuntimeInformation_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "reportURI",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "jobID",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "jobLabel",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "fireTimeFrom",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "fireTimeTo",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "Create_getReportOutputMetadata_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{executionId}/exports/{exportId}/attachments/{attachment}": {
+      "get": {
+        "description": "",
+        "operationId": "getAttachment_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "executionId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "exportId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "attachment",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{executionId}/parameters": {
+      "post": {
+        "description": "",
+        "operationId": "Create_getReportInputParametersViaPost_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "freshData",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "executionId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{executionId}": {
+      "get": {
+        "description": "",
+        "operationId": "getReportExecution_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "executionId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{executionId}/exports/{exportId}/outputResource": {
+      "get": {
+        "description": "",
+        "operationId": "getOutputResource_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "suppressContentDisposition",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "default": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "executionId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "exportId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{executionId}/exports/{exportId}/status": {
+      "get": {
+        "description": "",
+        "operationId": "getExportExecutionStatusObject_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "executionId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "exportId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{executionId}/exports": {
+      "post": {
+        "description": "",
+        "operationId": "Create_export_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "executionId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/roles": {
+      "get": {
+        "description": "",
+        "operationId": "getRoles_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "maxRecords",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "subOrgId",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "includeSubOrgs",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "hasAllUsers",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/customDataSources": {
+      "get": {
+        "description": "",
+        "operationId": "getCustomDataSources_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/attributes": {
+      "get": {
+        "description": "",
+        "operationId": "getAttributes_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "_embedded",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "putAttributes_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "_embedded",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "deleteAttributes_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{attrName}": {
+      "get": {
+        "description": "",
+        "operationId": "getSpecificAttribute_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "_embedded",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "attrName",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "operationId": "putAttribute_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "_embedded",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "attrName",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "operationId": "deleteAttribute_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "attrName",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/export": {
+      "post": {
+        "description": "",
+        "operationId": "createNewTask_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{id}/{name}": {
+      "get": {
+        "description": "",
+        "operationId": "Get_downloadFile_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/thumbnails": {
+      "get": {
+        "description": "",
+        "operationId": "getThumbnails_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "defaultAllowed",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "uri",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "operationId": "Create_getThumbnailsFormEncoded_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "defaultAllowed",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "boolean",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{cacheId}": {
+      "delete": {
+        "description": "",
+        "operationId": "Delete_clearCache_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "cacheId",
+            "in": "path",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    }
+  }
+}
