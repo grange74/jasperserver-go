@@ -2,7 +2,7 @@
 
 ## Client
 
-This repo contains a Go client for the JasperReports Server Community Edition's v2 REST API. Releases of JasperReports can be found [here]((http://community.jaspersoft.com/project/jasperreports-server/releases)) and documentation for the v2 REST API are [here](http://community.jaspersoft.com/documentation/tibco-jasperreports-server-web-services-guide/v610/introduction-0). Currently this Go client only supports version 6.1.0 of JasperReports. 
+This repo contains a Go client for the JasperReports Server Community Edition's v2 REST API. Releases of JasperReports can be found [here](http://community.jaspersoft.com/project/jasperreports-server/releases) and documentation for the v2 REST API are [here](http://community.jaspersoft.com/documentation/tibco-jasperreports-server-web-services-guide/v610/introduction-0). Currently this Go client only supports version 6.1.0 of JasperReports. 
 
 The reason for creating this JasperServer API client in Go is to use it from a JasperServer [Terraform Provider](https://www.terraform.io/docs/providers/) that we plan to build. 
 
@@ -15,7 +15,9 @@ This client was automatically generated using [go-swagger](https://github.com/go
 The process to generate this client was to:
 
 1. Get the WADL from a running JasperServer instance (e.g. Using [our jasperserver docker container](https://github.com/retrievercommunications/docker-jasperserver)).
+
 Example URL: http://localhost:8080/jasperserver/rest_v2/application.wadl
+
 This file is saved in this repo under {version}/application.wadl 
 
 2. Convert from WADL to Swagger 2.0 JSON using [API Transformer website](https://apitransformer.com/). This file is saved in this repo under {version}/converted.json
@@ -42,4 +44,4 @@ Unfortunately the swagger-go client generation process wasn't as easy as hoped f
 ## TODOs
 
 * Support multiple versions of the API, currently it only supports JasperServer version 6.1.0
-* Include some sample code of how to use this client. [See goswagger example](https://goswagger.io/generate/client/)
+* Include some sample code of how to use this client. [See go-swagger example](https://goswagger.io/generate/client/)
