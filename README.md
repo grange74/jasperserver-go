@@ -14,11 +14,7 @@ This client was automatically generated using [go-swagger](https://github.com/go
 
 The process to generate this client was to:
 
-1. Get the WADL from a running JasperServer instance (e.g. Using [our jasperserver docker container](https://github.com/retrievercommunications/docker-jasperserver)).
-
-Example URL: http://localhost:8080/jasperserver/rest_v2/application.wadl
-
-This file is saved in this repo under {version}/application.wadl 
+1. Get the WADL from a running JasperServer instance (e.g. Using [our jasperserver docker container](https://github.com/retrievercommunications/docker-jasperserver)). Example URL: http://localhost:8080/jasperserver/rest_v2/application.wadl. This file is saved in this repo under {version}/application.wadl 
 
 2. Convert from WADL to Swagger 2.0 JSON using [API Transformer website](https://apitransformer.com/). This file is saved in this repo under {version}/converted.json
 
