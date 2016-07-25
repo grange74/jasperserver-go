@@ -4,11 +4,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewUpdateDefaultPutHandlerForRootParams creates a new UpdateDefaultPutHandlerForRootParams object
@@ -23,6 +26,25 @@ func NewUpdateDefaultPutHandlerForRootParams() *UpdateDefaultPutHandlerForRootPa
 		CreateFolders: &createFoldersDefault,
 		Expanded:      &expandedDefault,
 		Overwrite:     &overwriteDefault,
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewUpdateDefaultPutHandlerForRootParamsWithTimeout creates a new UpdateDefaultPutHandlerForRootParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewUpdateDefaultPutHandlerForRootParamsWithTimeout(timeout time.Duration) *UpdateDefaultPutHandlerForRootParams {
+	var (
+		createFoldersDefault bool = bool(true)
+		expandedDefault      bool = bool(false)
+		overwriteDefault     bool = bool(false)
+	)
+	return &UpdateDefaultPutHandlerForRootParams{
+		CreateFolders: &createFoldersDefault,
+		Expanded:      &expandedDefault,
+		Overwrite:     &overwriteDefault,
+
+		timeout: timeout,
 	}
 }
 
@@ -47,59 +69,62 @@ type UpdateDefaultPutHandlerForRootParams struct {
 	Expanded *bool
 	/*Overwrite*/
 	Overwrite *bool
+
+	timeout time.Duration
 }
 
 // WithAccept adds the accept to the update default put handler for root params
-func (o *UpdateDefaultPutHandlerForRootParams) WithAccept(accept *string) *UpdateDefaultPutHandlerForRootParams {
-	o.Accept = accept
+func (o *UpdateDefaultPutHandlerForRootParams) WithAccept(Accept *string) *UpdateDefaultPutHandlerForRootParams {
+	o.Accept = Accept
 	return o
 }
 
 // WithContentDescription adds the contentDescription to the update default put handler for root params
-func (o *UpdateDefaultPutHandlerForRootParams) WithContentDescription(contentDescription *string) *UpdateDefaultPutHandlerForRootParams {
-	o.ContentDescription = contentDescription
+func (o *UpdateDefaultPutHandlerForRootParams) WithContentDescription(ContentDescription *string) *UpdateDefaultPutHandlerForRootParams {
+	o.ContentDescription = ContentDescription
 	return o
 }
 
 // WithContentDisposition adds the contentDisposition to the update default put handler for root params
-func (o *UpdateDefaultPutHandlerForRootParams) WithContentDisposition(contentDisposition *string) *UpdateDefaultPutHandlerForRootParams {
-	o.ContentDisposition = contentDisposition
+func (o *UpdateDefaultPutHandlerForRootParams) WithContentDisposition(ContentDisposition *string) *UpdateDefaultPutHandlerForRootParams {
+	o.ContentDisposition = ContentDisposition
 	return o
 }
 
 // WithContentLocation adds the contentLocation to the update default put handler for root params
-func (o *UpdateDefaultPutHandlerForRootParams) WithContentLocation(contentLocation *string) *UpdateDefaultPutHandlerForRootParams {
-	o.ContentLocation = contentLocation
+func (o *UpdateDefaultPutHandlerForRootParams) WithContentLocation(ContentLocation *string) *UpdateDefaultPutHandlerForRootParams {
+	o.ContentLocation = ContentLocation
 	return o
 }
 
 // WithContentType adds the contentType to the update default put handler for root params
-func (o *UpdateDefaultPutHandlerForRootParams) WithContentType(contentType *string) *UpdateDefaultPutHandlerForRootParams {
-	o.ContentType = contentType
+func (o *UpdateDefaultPutHandlerForRootParams) WithContentType(ContentType *string) *UpdateDefaultPutHandlerForRootParams {
+	o.ContentType = ContentType
 	return o
 }
 
 // WithCreateFolders adds the createFolders to the update default put handler for root params
-func (o *UpdateDefaultPutHandlerForRootParams) WithCreateFolders(createFolders *bool) *UpdateDefaultPutHandlerForRootParams {
-	o.CreateFolders = createFolders
+func (o *UpdateDefaultPutHandlerForRootParams) WithCreateFolders(CreateFolders *bool) *UpdateDefaultPutHandlerForRootParams {
+	o.CreateFolders = CreateFolders
 	return o
 }
 
 // WithExpanded adds the expanded to the update default put handler for root params
-func (o *UpdateDefaultPutHandlerForRootParams) WithExpanded(expanded *bool) *UpdateDefaultPutHandlerForRootParams {
-	o.Expanded = expanded
+func (o *UpdateDefaultPutHandlerForRootParams) WithExpanded(Expanded *bool) *UpdateDefaultPutHandlerForRootParams {
+	o.Expanded = Expanded
 	return o
 }
 
 // WithOverwrite adds the overwrite to the update default put handler for root params
-func (o *UpdateDefaultPutHandlerForRootParams) WithOverwrite(overwrite *bool) *UpdateDefaultPutHandlerForRootParams {
-	o.Overwrite = overwrite
+func (o *UpdateDefaultPutHandlerForRootParams) WithOverwrite(Overwrite *bool) *UpdateDefaultPutHandlerForRootParams {
+	o.Overwrite = Overwrite
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *UpdateDefaultPutHandlerForRootParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *UpdateDefaultPutHandlerForRootParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Accept != nil {

@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewUpdateRoleParams creates a new UpdateRoleParams object
 // with the default values initialized.
 func NewUpdateRoleParams() *UpdateRoleParams {
 	var ()
-	return &UpdateRoleParams{}
+	return &UpdateRoleParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewUpdateRoleParamsWithTimeout creates a new UpdateRoleParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewUpdateRoleParamsWithTimeout(timeout time.Duration) *UpdateRoleParams {
+	var ()
+	return &UpdateRoleParams{
+
+		timeout: timeout,
+	}
 }
 
 /*UpdateRoleParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type UpdateRoleParams struct {
 
 	/*Name*/
 	Name *string
+
+	timeout time.Duration
 }
 
 // WithName adds the name to the update role params
-func (o *UpdateRoleParams) WithName(name *string) *UpdateRoleParams {
-	o.Name = name
+func (o *UpdateRoleParams) WithName(Name *string) *UpdateRoleParams {
+	o.Name = Name
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *UpdateRoleParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *UpdateRoleParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Name != nil {

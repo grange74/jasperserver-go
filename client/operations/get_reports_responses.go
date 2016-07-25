@@ -6,10 +6,9 @@ package operations
 import (
 	"fmt"
 
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/httpkit"
+	"github.com/go-openapi/runtime"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // GetReportsReader is a Reader for the GetReports structure.
@@ -18,7 +17,7 @@ type GetReportsReader struct {
 }
 
 // ReadResponse reads a server response into the recieved o.
-func (o *GetReportsReader) ReadResponse(response client.Response, consumer httpkit.Consumer) (interface{}, error) {
+func (o *GetReportsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
 	case 200:
@@ -29,7 +28,7 @@ func (o *GetReportsReader) ReadResponse(response client.Response, consumer httpk
 		return result, nil
 
 	default:
-		return nil, client.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
 }
 
@@ -49,7 +48,7 @@ func (o *GetReportsOK) Error() string {
 	return fmt.Sprintf("[GET /reports][%d] getReportsOK ", 200)
 }
 
-func (o *GetReportsOK) readResponse(response client.Response, consumer httpkit.Consumer, formats strfmt.Registry) error {
+func (o *GetReportsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -4,11 +4,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetReportInputControlValuesParams creates a new GetReportInputControlValuesParams object
@@ -19,6 +22,21 @@ func NewGetReportInputControlValuesParams() *GetReportInputControlValuesParams {
 	)
 	return &GetReportInputControlValuesParams{
 		FreshData: &freshDataDefault,
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetReportInputControlValuesParamsWithTimeout creates a new GetReportInputControlValuesParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetReportInputControlValuesParamsWithTimeout(timeout time.Duration) *GetReportInputControlValuesParams {
+	var (
+		freshDataDefault bool = bool(false)
+	)
+	return &GetReportInputControlValuesParams{
+		FreshData: &freshDataDefault,
+
+		timeout: timeout,
 	}
 }
 
@@ -33,29 +51,32 @@ type GetReportInputControlValuesParams struct {
 	InputControlIds *string
 	/*ReportUnitURI*/
 	ReportUnitURI *string
+
+	timeout time.Duration
 }
 
 // WithFreshData adds the freshData to the get report input control values params
-func (o *GetReportInputControlValuesParams) WithFreshData(freshData *bool) *GetReportInputControlValuesParams {
-	o.FreshData = freshData
+func (o *GetReportInputControlValuesParams) WithFreshData(FreshData *bool) *GetReportInputControlValuesParams {
+	o.FreshData = FreshData
 	return o
 }
 
 // WithInputControlIds adds the inputControlIds to the get report input control values params
-func (o *GetReportInputControlValuesParams) WithInputControlIds(inputControlIds *string) *GetReportInputControlValuesParams {
-	o.InputControlIds = inputControlIds
+func (o *GetReportInputControlValuesParams) WithInputControlIds(InputControlIds *string) *GetReportInputControlValuesParams {
+	o.InputControlIds = InputControlIds
 	return o
 }
 
 // WithReportUnitURI adds the reportUnitUri to the get report input control values params
-func (o *GetReportInputControlValuesParams) WithReportUnitURI(reportUnitUri *string) *GetReportInputControlValuesParams {
-	o.ReportUnitURI = reportUnitUri
+func (o *GetReportInputControlValuesParams) WithReportUnitURI(ReportUnitURI *string) *GetReportInputControlValuesParams {
+	o.ReportUnitURI = ReportUnitURI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetReportInputControlValuesParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetReportInputControlValuesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.FreshData != nil {

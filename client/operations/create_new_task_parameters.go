@@ -4,28 +4,46 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewCreateNewTaskParams creates a new CreateNewTaskParams object
 // with the default values initialized.
 func NewCreateNewTaskParams() *CreateNewTaskParams {
 
-	return &CreateNewTaskParams{}
+	return &CreateNewTaskParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewCreateNewTaskParamsWithTimeout creates a new CreateNewTaskParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewCreateNewTaskParamsWithTimeout(timeout time.Duration) *CreateNewTaskParams {
+
+	return &CreateNewTaskParams{
+
+		timeout: timeout,
+	}
 }
 
 /*CreateNewTaskParams contains all the parameters to send to the API endpoint
 for the create new task operation typically these are written to a http.Request
 */
 type CreateNewTaskParams struct {
+	timeout time.Duration
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *CreateNewTaskParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *CreateNewTaskParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if len(res) > 0 {

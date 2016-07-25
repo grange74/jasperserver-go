@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewDeleteClearCacheParams creates a new DeleteClearCacheParams object
 // with the default values initialized.
 func NewDeleteClearCacheParams() *DeleteClearCacheParams {
 	var ()
-	return &DeleteClearCacheParams{}
+	return &DeleteClearCacheParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewDeleteClearCacheParamsWithTimeout creates a new DeleteClearCacheParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewDeleteClearCacheParamsWithTimeout(timeout time.Duration) *DeleteClearCacheParams {
+	var ()
+	return &DeleteClearCacheParams{
+
+		timeout: timeout,
+	}
 }
 
 /*DeleteClearCacheParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type DeleteClearCacheParams struct {
 
 	/*CacheID*/
 	CacheID *string
+
+	timeout time.Duration
 }
 
 // WithCacheID adds the cacheId to the delete clear cache params
-func (o *DeleteClearCacheParams) WithCacheID(cacheId *string) *DeleteClearCacheParams {
-	o.CacheID = cacheId
+func (o *DeleteClearCacheParams) WithCacheID(CacheID *string) *DeleteClearCacheParams {
+	o.CacheID = CacheID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *DeleteClearCacheParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *DeleteClearCacheParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.CacheID != nil {

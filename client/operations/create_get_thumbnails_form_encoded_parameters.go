@@ -4,18 +4,34 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewCreateGetThumbnailsFormEncodedParams creates a new CreateGetThumbnailsFormEncodedParams object
 // with the default values initialized.
 func NewCreateGetThumbnailsFormEncodedParams() *CreateGetThumbnailsFormEncodedParams {
 	var ()
-	return &CreateGetThumbnailsFormEncodedParams{}
+	return &CreateGetThumbnailsFormEncodedParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewCreateGetThumbnailsFormEncodedParamsWithTimeout creates a new CreateGetThumbnailsFormEncodedParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewCreateGetThumbnailsFormEncodedParamsWithTimeout(timeout time.Duration) *CreateGetThumbnailsFormEncodedParams {
+	var ()
+	return &CreateGetThumbnailsFormEncodedParams{
+
+		timeout: timeout,
+	}
 }
 
 /*CreateGetThumbnailsFormEncodedParams contains all the parameters to send to the API endpoint
@@ -27,23 +43,26 @@ type CreateGetThumbnailsFormEncodedParams struct {
 	Accept *string
 	/*DefaultAllowed*/
 	DefaultAllowed *bool
+
+	timeout time.Duration
 }
 
 // WithAccept adds the accept to the create get thumbnails form encoded params
-func (o *CreateGetThumbnailsFormEncodedParams) WithAccept(accept *string) *CreateGetThumbnailsFormEncodedParams {
-	o.Accept = accept
+func (o *CreateGetThumbnailsFormEncodedParams) WithAccept(Accept *string) *CreateGetThumbnailsFormEncodedParams {
+	o.Accept = Accept
 	return o
 }
 
 // WithDefaultAllowed adds the defaultAllowed to the create get thumbnails form encoded params
-func (o *CreateGetThumbnailsFormEncodedParams) WithDefaultAllowed(defaultAllowed *bool) *CreateGetThumbnailsFormEncodedParams {
-	o.DefaultAllowed = defaultAllowed
+func (o *CreateGetThumbnailsFormEncodedParams) WithDefaultAllowed(DefaultAllowed *bool) *CreateGetThumbnailsFormEncodedParams {
+	o.DefaultAllowed = DefaultAllowed
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *CreateGetThumbnailsFormEncodedParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *CreateGetThumbnailsFormEncodedParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Accept != nil {

@@ -4,11 +4,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewCreateFileViaFormParams creates a new CreateFileViaFormParams object
@@ -19,6 +22,21 @@ func NewCreateFileViaFormParams() *CreateFileViaFormParams {
 	)
 	return &CreateFileViaFormParams{
 		CreateFolders: &createFoldersDefault,
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewCreateFileViaFormParamsWithTimeout creates a new CreateFileViaFormParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewCreateFileViaFormParamsWithTimeout(timeout time.Duration) *CreateFileViaFormParams {
+	var (
+		createFoldersDefault bool = bool(true)
+	)
+	return &CreateFileViaFormParams{
+		CreateFolders: &createFoldersDefault,
+
+		timeout: timeout,
 	}
 }
 
@@ -31,23 +49,26 @@ type CreateFileViaFormParams struct {
 	CreateFolders *bool
 	/*URI*/
 	URI *string
+
+	timeout time.Duration
 }
 
 // WithCreateFolders adds the createFolders to the create file via form params
-func (o *CreateFileViaFormParams) WithCreateFolders(createFolders *bool) *CreateFileViaFormParams {
-	o.CreateFolders = createFolders
+func (o *CreateFileViaFormParams) WithCreateFolders(CreateFolders *bool) *CreateFileViaFormParams {
+	o.CreateFolders = CreateFolders
 	return o
 }
 
 // WithURI adds the uri to the create file via form params
-func (o *CreateFileViaFormParams) WithURI(uri *string) *CreateFileViaFormParams {
-	o.URI = uri
+func (o *CreateFileViaFormParams) WithURI(URI *string) *CreateFileViaFormParams {
+	o.URI = URI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *CreateFileViaFormParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *CreateFileViaFormParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.CreateFolders != nil {

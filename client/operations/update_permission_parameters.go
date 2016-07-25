@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewUpdatePermissionParams creates a new UpdatePermissionParams object
 // with the default values initialized.
 func NewUpdatePermissionParams() *UpdatePermissionParams {
 	var ()
-	return &UpdatePermissionParams{}
+	return &UpdatePermissionParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewUpdatePermissionParamsWithTimeout creates a new UpdatePermissionParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewUpdatePermissionParamsWithTimeout(timeout time.Duration) *UpdatePermissionParams {
+	var ()
+	return &UpdatePermissionParams{
+
+		timeout: timeout,
+	}
 }
 
 /*UpdatePermissionParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type UpdatePermissionParams struct {
 
 	/*URI*/
 	URI *string
+
+	timeout time.Duration
 }
 
 // WithURI adds the uri to the update permission params
-func (o *UpdatePermissionParams) WithURI(uri *string) *UpdatePermissionParams {
-	o.URI = uri
+func (o *UpdatePermissionParams) WithURI(URI *string) *UpdatePermissionParams {
+	o.URI = URI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *UpdatePermissionParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *UpdatePermissionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.URI != nil {

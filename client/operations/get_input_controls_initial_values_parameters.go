@@ -4,11 +4,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetInputControlsInitialValuesParams creates a new GetInputControlsInitialValuesParams object
@@ -19,6 +22,21 @@ func NewGetInputControlsInitialValuesParams() *GetInputControlsInitialValuesPara
 	)
 	return &GetInputControlsInitialValuesParams{
 		FreshData: &freshDataDefault,
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetInputControlsInitialValuesParamsWithTimeout creates a new GetInputControlsInitialValuesParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetInputControlsInitialValuesParamsWithTimeout(timeout time.Duration) *GetInputControlsInitialValuesParams {
+	var (
+		freshDataDefault bool = bool(false)
+	)
+	return &GetInputControlsInitialValuesParams{
+		FreshData: &freshDataDefault,
+
+		timeout: timeout,
 	}
 }
 
@@ -31,23 +49,26 @@ type GetInputControlsInitialValuesParams struct {
 	FreshData *bool
 	/*ReportUnitURI*/
 	ReportUnitURI *string
+
+	timeout time.Duration
 }
 
 // WithFreshData adds the freshData to the get input controls initial values params
-func (o *GetInputControlsInitialValuesParams) WithFreshData(freshData *bool) *GetInputControlsInitialValuesParams {
-	o.FreshData = freshData
+func (o *GetInputControlsInitialValuesParams) WithFreshData(FreshData *bool) *GetInputControlsInitialValuesParams {
+	o.FreshData = FreshData
 	return o
 }
 
 // WithReportUnitURI adds the reportUnitUri to the get input controls initial values params
-func (o *GetInputControlsInitialValuesParams) WithReportUnitURI(reportUnitUri *string) *GetInputControlsInitialValuesParams {
-	o.ReportUnitURI = reportUnitUri
+func (o *GetInputControlsInitialValuesParams) WithReportUnitURI(ReportUnitURI *string) *GetInputControlsInitialValuesParams {
+	o.ReportUnitURI = ReportUnitURI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetInputControlsInitialValuesParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetInputControlsInitialValuesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.FreshData != nil {

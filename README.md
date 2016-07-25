@@ -20,6 +20,12 @@ The process to generate this client was to:
 
 3. Generate the Go client using [go-swagger](https://github.com/go-swagger/go-swagger)
 
+Install Go-Swagger:
+```
+go get -u github.com/go-swagger/go-swagger/cmd/swagger
+```
+
+Run command to generate the client code:
 ```
 swagger generate client [-f {version}/swagger.json] -A [application-name [--principal [principal-name]]
 ```
@@ -31,7 +37,6 @@ Run `swagger generate client -f 6.1.0/converted.json -A jasperserver`
 
 Notes:
 Unfortunately the swagger-go client generation process wasn't as easy as hoped for:
-* Had to vendor the version 0.5.0 packages which are moving in the upcoming 0.6.0 version to github.com/go-openapi
 * Had to remove unused imports, mainly in _responses.go files, including a reference to a models package in this repo
 * Had to add extra backslash to \d other compilation failed with "unknown escape sequence: d"
 * Had to rename a parameter called 'type' which is forbidden

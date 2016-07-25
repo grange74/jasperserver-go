@@ -4,18 +4,34 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetUsersParams creates a new GetUsersParams object
 // with the default values initialized.
 func NewGetUsersParams() *GetUsersParams {
 	var ()
-	return &GetUsersParams{}
+	return &GetUsersParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetUsersParamsWithTimeout creates a new GetUsersParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetUsersParamsWithTimeout(timeout time.Duration) *GetUsersParams {
+	var ()
+	return &GetUsersParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetUsersParams contains all the parameters to send to the API endpoint
@@ -41,65 +57,68 @@ type GetUsersParams struct {
 	Search *string
 	/*SubOrgID*/
 	SubOrgID *string
+
+	timeout time.Duration
 }
 
 // WithHasAllRequiredRoles adds the hasAllRequiredRoles to the get users params
-func (o *GetUsersParams) WithHasAllRequiredRoles(hasAllRequiredRoles *bool) *GetUsersParams {
-	o.HasAllRequiredRoles = hasAllRequiredRoles
+func (o *GetUsersParams) WithHasAllRequiredRoles(HasAllRequiredRoles *bool) *GetUsersParams {
+	o.HasAllRequiredRoles = HasAllRequiredRoles
 	return o
 }
 
 // WithIncludeSubOrgs adds the includeSubOrgs to the get users params
-func (o *GetUsersParams) WithIncludeSubOrgs(includeSubOrgs *bool) *GetUsersParams {
-	o.IncludeSubOrgs = includeSubOrgs
+func (o *GetUsersParams) WithIncludeSubOrgs(IncludeSubOrgs *bool) *GetUsersParams {
+	o.IncludeSubOrgs = IncludeSubOrgs
 	return o
 }
 
 // WithLimit adds the limit to the get users params
-func (o *GetUsersParams) WithLimit(limit *int32) *GetUsersParams {
-	o.Limit = limit
+func (o *GetUsersParams) WithLimit(Limit *int32) *GetUsersParams {
+	o.Limit = Limit
 	return o
 }
 
 // WithMaxRecords adds the maxRecords to the get users params
-func (o *GetUsersParams) WithMaxRecords(maxRecords *int32) *GetUsersParams {
-	o.MaxRecords = maxRecords
+func (o *GetUsersParams) WithMaxRecords(MaxRecords *int32) *GetUsersParams {
+	o.MaxRecords = MaxRecords
 	return o
 }
 
 // WithOffset adds the offset to the get users params
-func (o *GetUsersParams) WithOffset(offset *int32) *GetUsersParams {
-	o.Offset = offset
+func (o *GetUsersParams) WithOffset(Offset *int32) *GetUsersParams {
+	o.Offset = Offset
 	return o
 }
 
 // WithQ adds the q to the get users params
-func (o *GetUsersParams) WithQ(q *string) *GetUsersParams {
-	o.Q = q
+func (o *GetUsersParams) WithQ(Q *string) *GetUsersParams {
+	o.Q = Q
 	return o
 }
 
 // WithRequiredRole adds the requiredRole to the get users params
-func (o *GetUsersParams) WithRequiredRole(requiredRole *string) *GetUsersParams {
-	o.RequiredRole = requiredRole
+func (o *GetUsersParams) WithRequiredRole(RequiredRole *string) *GetUsersParams {
+	o.RequiredRole = RequiredRole
 	return o
 }
 
 // WithSearch adds the search to the get users params
-func (o *GetUsersParams) WithSearch(search *string) *GetUsersParams {
-	o.Search = search
+func (o *GetUsersParams) WithSearch(Search *string) *GetUsersParams {
+	o.Search = Search
 	return o
 }
 
 // WithSubOrgID adds the subOrgId to the get users params
-func (o *GetUsersParams) WithSubOrgID(subOrgId *string) *GetUsersParams {
-	o.SubOrgID = subOrgId
+func (o *GetUsersParams) WithSubOrgID(SubOrgID *string) *GetUsersParams {
+	o.SubOrgID = SubOrgID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetUsersParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetUsersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.HasAllRequiredRoles != nil {

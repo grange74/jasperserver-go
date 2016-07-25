@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewModifyConnectionParams creates a new ModifyConnectionParams object
 // with the default values initialized.
 func NewModifyConnectionParams() *ModifyConnectionParams {
 	var ()
-	return &ModifyConnectionParams{}
+	return &ModifyConnectionParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewModifyConnectionParamsWithTimeout creates a new ModifyConnectionParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewModifyConnectionParamsWithTimeout(timeout time.Duration) *ModifyConnectionParams {
+	var ()
+	return &ModifyConnectionParams{
+
+		timeout: timeout,
+	}
 }
 
 /*ModifyConnectionParams contains all the parameters to send to the API endpoint
@@ -26,23 +42,26 @@ type ModifyConnectionParams struct {
 	ContentType *string
 	/*UUID*/
 	UUID *string
+
+	timeout time.Duration
 }
 
 // WithContentType adds the contentType to the modify connection params
-func (o *ModifyConnectionParams) WithContentType(contentType *string) *ModifyConnectionParams {
-	o.ContentType = contentType
+func (o *ModifyConnectionParams) WithContentType(ContentType *string) *ModifyConnectionParams {
+	o.ContentType = ContentType
 	return o
 }
 
 // WithUUID adds the uuid to the modify connection params
-func (o *ModifyConnectionParams) WithUUID(uuid *string) *ModifyConnectionParams {
-	o.UUID = uuid
+func (o *ModifyConnectionParams) WithUUID(UUID *string) *ModifyConnectionParams {
+	o.UUID = UUID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *ModifyConnectionParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *ModifyConnectionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ContentType != nil {

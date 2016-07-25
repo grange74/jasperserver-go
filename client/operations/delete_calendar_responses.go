@@ -6,10 +6,9 @@ package operations
 import (
 	"fmt"
 
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/httpkit"
+	"github.com/go-openapi/runtime"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // DeleteCalendarReader is a Reader for the DeleteCalendar structure.
@@ -18,7 +17,7 @@ type DeleteCalendarReader struct {
 }
 
 // ReadResponse reads a server response into the recieved o.
-func (o *DeleteCalendarReader) ReadResponse(response client.Response, consumer httpkit.Consumer) (interface{}, error) {
+func (o *DeleteCalendarReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
 	case 200:
@@ -29,7 +28,7 @@ func (o *DeleteCalendarReader) ReadResponse(response client.Response, consumer h
 		return result, nil
 
 	default:
-		return nil, client.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
 }
 
@@ -49,7 +48,7 @@ func (o *DeleteCalendarOK) Error() string {
 	return fmt.Sprintf("[DELETE /calendars/{calendarName}][%d] deleteCalendarOK ", 200)
 }
 
-func (o *DeleteCalendarOK) readResponse(response client.Response, consumer httpkit.Consumer, formats strfmt.Registry) error {
+func (o *DeleteCalendarOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

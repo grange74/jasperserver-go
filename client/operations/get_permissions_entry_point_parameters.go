@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetPermissionsEntryPointParams creates a new GetPermissionsEntryPointParams object
 // with the default values initialized.
 func NewGetPermissionsEntryPointParams() *GetPermissionsEntryPointParams {
 	var ()
-	return &GetPermissionsEntryPointParams{}
+	return &GetPermissionsEntryPointParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetPermissionsEntryPointParamsWithTimeout creates a new GetPermissionsEntryPointParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetPermissionsEntryPointParamsWithTimeout(timeout time.Duration) *GetPermissionsEntryPointParams {
+	var ()
+	return &GetPermissionsEntryPointParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetPermissionsEntryPointParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type GetPermissionsEntryPointParams struct {
 
 	/*URI*/
 	URI *string
+
+	timeout time.Duration
 }
 
 // WithURI adds the uri to the get permissions entry point params
-func (o *GetPermissionsEntryPointParams) WithURI(uri *string) *GetPermissionsEntryPointParams {
-	o.URI = uri
+func (o *GetPermissionsEntryPointParams) WithURI(URI *string) *GetPermissionsEntryPointParams {
+	o.URI = URI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetPermissionsEntryPointParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetPermissionsEntryPointParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.URI != nil {

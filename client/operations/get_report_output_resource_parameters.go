@@ -4,11 +4,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetReportOutputResourceParams creates a new GetReportOutputResourceParams object
@@ -25,6 +28,27 @@ func NewGetReportOutputResourceParams() *GetReportOutputResourceParams {
 		FreshData:          &freshDataDefault,
 		Interactive:        &interactiveDefault,
 		SaveDataSnapshot:   &saveDataSnapshotDefault,
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetReportOutputResourceParamsWithTimeout creates a new GetReportOutputResourceParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetReportOutputResourceParamsWithTimeout(timeout time.Duration) *GetReportOutputResourceParams {
+	var (
+		allowInlineScriptsDefault bool = bool(true)
+		freshDataDefault          bool = bool(false)
+		interactiveDefault        bool = bool(true)
+		saveDataSnapshotDefault   bool = bool(false)
+	)
+	return &GetReportOutputResourceParams{
+		AllowInlineScripts: &allowInlineScriptsDefault,
+		FreshData:          &freshDataDefault,
+		Interactive:        &interactiveDefault,
+		SaveDataSnapshot:   &saveDataSnapshotDefault,
+
+		timeout: timeout,
 	}
 }
 
@@ -63,101 +87,104 @@ type GetReportOutputResourceParams struct {
 	TransformerKey *string
 	/*XJrsBaseURL*/
 	XJrsBaseURL *string
+
+	timeout time.Duration
 }
 
 // WithAllowInlineScripts adds the allowInlineScripts to the get report output resource params
-func (o *GetReportOutputResourceParams) WithAllowInlineScripts(allowInlineScripts *bool) *GetReportOutputResourceParams {
-	o.AllowInlineScripts = allowInlineScripts
+func (o *GetReportOutputResourceParams) WithAllowInlineScripts(AllowInlineScripts *bool) *GetReportOutputResourceParams {
+	o.AllowInlineScripts = AllowInlineScripts
 	return o
 }
 
 // WithAnchor adds the anchor to the get report output resource params
-func (o *GetReportOutputResourceParams) WithAnchor(anchor *string) *GetReportOutputResourceParams {
-	o.Anchor = anchor
+func (o *GetReportOutputResourceParams) WithAnchor(Anchor *string) *GetReportOutputResourceParams {
+	o.Anchor = Anchor
 	return o
 }
 
 // WithAttachmentsPrefix adds the attachmentsPrefix to the get report output resource params
-func (o *GetReportOutputResourceParams) WithAttachmentsPrefix(attachmentsPrefix *string) *GetReportOutputResourceParams {
-	o.AttachmentsPrefix = attachmentsPrefix
+func (o *GetReportOutputResourceParams) WithAttachmentsPrefix(AttachmentsPrefix *string) *GetReportOutputResourceParams {
+	o.AttachmentsPrefix = AttachmentsPrefix
 	return o
 }
 
 // WithBaseURL adds the baseUrl to the get report output resource params
-func (o *GetReportOutputResourceParams) WithBaseURL(baseUrl *string) *GetReportOutputResourceParams {
-	o.BaseURL = baseUrl
+func (o *GetReportOutputResourceParams) WithBaseURL(BaseURL *string) *GetReportOutputResourceParams {
+	o.BaseURL = BaseURL
 	return o
 }
 
 // WithFreshData adds the freshData to the get report output resource params
-func (o *GetReportOutputResourceParams) WithFreshData(freshData *bool) *GetReportOutputResourceParams {
-	o.FreshData = freshData
+func (o *GetReportOutputResourceParams) WithFreshData(FreshData *bool) *GetReportOutputResourceParams {
+	o.FreshData = FreshData
 	return o
 }
 
 // WithIgnorePagination adds the ignorePagination to the get report output resource params
-func (o *GetReportOutputResourceParams) WithIgnorePagination(ignorePagination *bool) *GetReportOutputResourceParams {
-	o.IgnorePagination = ignorePagination
+func (o *GetReportOutputResourceParams) WithIgnorePagination(IgnorePagination *bool) *GetReportOutputResourceParams {
+	o.IgnorePagination = IgnorePagination
 	return o
 }
 
 // WithInteractive adds the interactive to the get report output resource params
-func (o *GetReportOutputResourceParams) WithInteractive(interactive *bool) *GetReportOutputResourceParams {
-	o.Interactive = interactive
+func (o *GetReportOutputResourceParams) WithInteractive(Interactive *bool) *GetReportOutputResourceParams {
+	o.Interactive = Interactive
 	return o
 }
 
 // WithMarkupType adds the markupType to the get report output resource params
-func (o *GetReportOutputResourceParams) WithMarkupType(markupType *string) *GetReportOutputResourceParams {
-	o.MarkupType = markupType
+func (o *GetReportOutputResourceParams) WithMarkupType(MarkupType *string) *GetReportOutputResourceParams {
+	o.MarkupType = MarkupType
 	return o
 }
 
 // WithOutputFormat adds the outputFormat to the get report output resource params
-func (o *GetReportOutputResourceParams) WithOutputFormat(outputFormat *string) *GetReportOutputResourceParams {
-	o.OutputFormat = outputFormat
+func (o *GetReportOutputResourceParams) WithOutputFormat(OutputFormat *string) *GetReportOutputResourceParams {
+	o.OutputFormat = OutputFormat
 	return o
 }
 
 // WithPage adds the page to the get report output resource params
-func (o *GetReportOutputResourceParams) WithPage(page *int32) *GetReportOutputResourceParams {
-	o.Page = page
+func (o *GetReportOutputResourceParams) WithPage(Page *int32) *GetReportOutputResourceParams {
+	o.Page = Page
 	return o
 }
 
 // WithPages adds the pages to the get report output resource params
-func (o *GetReportOutputResourceParams) WithPages(pages *string) *GetReportOutputResourceParams {
-	o.Pages = pages
+func (o *GetReportOutputResourceParams) WithPages(Pages *string) *GetReportOutputResourceParams {
+	o.Pages = Pages
 	return o
 }
 
 // WithReportUnitURI adds the reportUnitUri to the get report output resource params
-func (o *GetReportOutputResourceParams) WithReportUnitURI(reportUnitUri *string) *GetReportOutputResourceParams {
-	o.ReportUnitURI = reportUnitUri
+func (o *GetReportOutputResourceParams) WithReportUnitURI(ReportUnitURI *string) *GetReportOutputResourceParams {
+	o.ReportUnitURI = ReportUnitURI
 	return o
 }
 
 // WithSaveDataSnapshot adds the saveDataSnapshot to the get report output resource params
-func (o *GetReportOutputResourceParams) WithSaveDataSnapshot(saveDataSnapshot *bool) *GetReportOutputResourceParams {
-	o.SaveDataSnapshot = saveDataSnapshot
+func (o *GetReportOutputResourceParams) WithSaveDataSnapshot(SaveDataSnapshot *bool) *GetReportOutputResourceParams {
+	o.SaveDataSnapshot = SaveDataSnapshot
 	return o
 }
 
 // WithTransformerKey adds the transformerKey to the get report output resource params
-func (o *GetReportOutputResourceParams) WithTransformerKey(transformerKey *string) *GetReportOutputResourceParams {
-	o.TransformerKey = transformerKey
+func (o *GetReportOutputResourceParams) WithTransformerKey(TransformerKey *string) *GetReportOutputResourceParams {
+	o.TransformerKey = TransformerKey
 	return o
 }
 
 // WithXJrsBaseURL adds the xJrsBaseUrl to the get report output resource params
-func (o *GetReportOutputResourceParams) WithXJrsBaseURL(xJrsBaseUrl *string) *GetReportOutputResourceParams {
-	o.XJrsBaseURL = xJrsBaseUrl
+func (o *GetReportOutputResourceParams) WithXJrsBaseURL(XJrsBaseURL *string) *GetReportOutputResourceParams {
+	o.XJrsBaseURL = XJrsBaseURL
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetReportOutputResourceParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetReportOutputResourceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.AllowInlineScripts != nil {

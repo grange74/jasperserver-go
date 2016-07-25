@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetExportExecutionStatusObjectParams creates a new GetExportExecutionStatusObjectParams object
 // with the default values initialized.
 func NewGetExportExecutionStatusObjectParams() *GetExportExecutionStatusObjectParams {
 	var ()
-	return &GetExportExecutionStatusObjectParams{}
+	return &GetExportExecutionStatusObjectParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetExportExecutionStatusObjectParamsWithTimeout creates a new GetExportExecutionStatusObjectParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetExportExecutionStatusObjectParamsWithTimeout(timeout time.Duration) *GetExportExecutionStatusObjectParams {
+	var ()
+	return &GetExportExecutionStatusObjectParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetExportExecutionStatusObjectParams contains all the parameters to send to the API endpoint
@@ -26,23 +42,26 @@ type GetExportExecutionStatusObjectParams struct {
 	ExecutionID *string
 	/*ExportID*/
 	ExportID *string
+
+	timeout time.Duration
 }
 
 // WithExecutionID adds the executionId to the get export execution status object params
-func (o *GetExportExecutionStatusObjectParams) WithExecutionID(executionId *string) *GetExportExecutionStatusObjectParams {
-	o.ExecutionID = executionId
+func (o *GetExportExecutionStatusObjectParams) WithExecutionID(ExecutionID *string) *GetExportExecutionStatusObjectParams {
+	o.ExecutionID = ExecutionID
 	return o
 }
 
 // WithExportID adds the exportId to the get export execution status object params
-func (o *GetExportExecutionStatusObjectParams) WithExportID(exportId *string) *GetExportExecutionStatusObjectParams {
-	o.ExportID = exportId
+func (o *GetExportExecutionStatusObjectParams) WithExportID(ExportID *string) *GetExportExecutionStatusObjectParams {
+	o.ExportID = ExportID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetExportExecutionStatusObjectParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetExportExecutionStatusObjectParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ExecutionID != nil {

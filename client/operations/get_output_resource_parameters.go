@@ -4,11 +4,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetOutputResourceParams creates a new GetOutputResourceParams object
@@ -19,6 +22,21 @@ func NewGetOutputResourceParams() *GetOutputResourceParams {
 	)
 	return &GetOutputResourceParams{
 		SuppressContentDisposition: &suppressContentDispositionDefault,
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetOutputResourceParamsWithTimeout creates a new GetOutputResourceParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetOutputResourceParamsWithTimeout(timeout time.Duration) *GetOutputResourceParams {
+	var (
+		suppressContentDispositionDefault bool = bool(false)
+	)
+	return &GetOutputResourceParams{
+		SuppressContentDisposition: &suppressContentDispositionDefault,
+
+		timeout: timeout,
 	}
 }
 
@@ -33,29 +51,32 @@ type GetOutputResourceParams struct {
 	ExportID *string
 	/*SuppressContentDisposition*/
 	SuppressContentDisposition *bool
+
+	timeout time.Duration
 }
 
 // WithExecutionID adds the executionId to the get output resource params
-func (o *GetOutputResourceParams) WithExecutionID(executionId *string) *GetOutputResourceParams {
-	o.ExecutionID = executionId
+func (o *GetOutputResourceParams) WithExecutionID(ExecutionID *string) *GetOutputResourceParams {
+	o.ExecutionID = ExecutionID
 	return o
 }
 
 // WithExportID adds the exportId to the get output resource params
-func (o *GetOutputResourceParams) WithExportID(exportId *string) *GetOutputResourceParams {
-	o.ExportID = exportId
+func (o *GetOutputResourceParams) WithExportID(ExportID *string) *GetOutputResourceParams {
+	o.ExportID = ExportID
 	return o
 }
 
 // WithSuppressContentDisposition adds the suppressContentDisposition to the get output resource params
-func (o *GetOutputResourceParams) WithSuppressContentDisposition(suppressContentDisposition *bool) *GetOutputResourceParams {
-	o.SuppressContentDisposition = suppressContentDisposition
+func (o *GetOutputResourceParams) WithSuppressContentDisposition(SuppressContentDisposition *bool) *GetOutputResourceParams {
+	o.SuppressContentDisposition = SuppressContentDisposition
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetOutputResourceParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetOutputResourceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ExecutionID != nil {

@@ -4,18 +4,34 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetBundlesParams creates a new GetBundlesParams object
 // with the default values initialized.
 func NewGetBundlesParams() *GetBundlesParams {
 	var ()
-	return &GetBundlesParams{}
+	return &GetBundlesParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetBundlesParamsWithTimeout creates a new GetBundlesParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetBundlesParamsWithTimeout(timeout time.Duration) *GetBundlesParams {
+	var ()
+	return &GetBundlesParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetBundlesParams contains all the parameters to send to the API endpoint
@@ -25,17 +41,20 @@ type GetBundlesParams struct {
 
 	/*Expanded*/
 	Expanded *bool
+
+	timeout time.Duration
 }
 
 // WithExpanded adds the expanded to the get bundles params
-func (o *GetBundlesParams) WithExpanded(expanded *bool) *GetBundlesParams {
-	o.Expanded = expanded
+func (o *GetBundlesParams) WithExpanded(Expanded *bool) *GetBundlesParams {
+	o.Expanded = Expanded
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetBundlesParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetBundlesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Expanded != nil {

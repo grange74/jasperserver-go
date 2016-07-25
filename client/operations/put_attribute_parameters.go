@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewPutAttributeParams creates a new PutAttributeParams object
 // with the default values initialized.
 func NewPutAttributeParams() *PutAttributeParams {
 	var ()
-	return &PutAttributeParams{}
+	return &PutAttributeParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewPutAttributeParamsWithTimeout creates a new PutAttributeParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewPutAttributeParamsWithTimeout(timeout time.Duration) *PutAttributeParams {
+	var ()
+	return &PutAttributeParams{
+
+		timeout: timeout,
+	}
 }
 
 /*PutAttributeParams contains all the parameters to send to the API endpoint
@@ -30,35 +46,38 @@ type PutAttributeParams struct {
 	Embedded *string
 	/*AttrName*/
 	AttrName *string
+
+	timeout time.Duration
 }
 
 // WithAccept adds the accept to the put attribute params
-func (o *PutAttributeParams) WithAccept(accept *string) *PutAttributeParams {
-	o.Accept = accept
+func (o *PutAttributeParams) WithAccept(Accept *string) *PutAttributeParams {
+	o.Accept = Accept
 	return o
 }
 
 // WithContentType adds the contentType to the put attribute params
-func (o *PutAttributeParams) WithContentType(contentType *string) *PutAttributeParams {
-	o.ContentType = contentType
+func (o *PutAttributeParams) WithContentType(ContentType *string) *PutAttributeParams {
+	o.ContentType = ContentType
 	return o
 }
 
 // WithEmbedded adds the embedded to the put attribute params
-func (o *PutAttributeParams) WithEmbedded(embedded *string) *PutAttributeParams {
-	o.Embedded = embedded
+func (o *PutAttributeParams) WithEmbedded(Embedded *string) *PutAttributeParams {
+	o.Embedded = Embedded
 	return o
 }
 
 // WithAttrName adds the attrName to the put attribute params
-func (o *PutAttributeParams) WithAttrName(attrName *string) *PutAttributeParams {
-	o.AttrName = attrName
+func (o *PutAttributeParams) WithAttrName(AttrName *string) *PutAttributeParams {
+	o.AttrName = AttrName
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *PutAttributeParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *PutAttributeParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Accept != nil {

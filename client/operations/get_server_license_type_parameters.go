@@ -4,28 +4,46 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetServerLicenseTypeParams creates a new GetServerLicenseTypeParams object
 // with the default values initialized.
 func NewGetServerLicenseTypeParams() *GetServerLicenseTypeParams {
 
-	return &GetServerLicenseTypeParams{}
+	return &GetServerLicenseTypeParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetServerLicenseTypeParamsWithTimeout creates a new GetServerLicenseTypeParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetServerLicenseTypeParamsWithTimeout(timeout time.Duration) *GetServerLicenseTypeParams {
+
+	return &GetServerLicenseTypeParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetServerLicenseTypeParams contains all the parameters to send to the API endpoint
 for the get server license type operation typically these are written to a http.Request
 */
 type GetServerLicenseTypeParams struct {
+	timeout time.Duration
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetServerLicenseTypeParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetServerLicenseTypeParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if len(res) > 0 {

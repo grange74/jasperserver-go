@@ -4,13 +4,13 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
+	"github.com/go-openapi/runtime"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // New creates a new operations API client.
-func New(transport client.Transport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -18,7 +18,7 @@ func New(transport client.Transport, formats strfmt.Registry) *Client {
 Client for operations API
 */
 type Client struct {
-	transport client.Transport
+	transport runtime.ClientTransport
 	formats   strfmt.Registry
 }
 
@@ -31,7 +31,7 @@ func (a *Client) CreateExport(params *CreateExportParams) (*CreateExportOK, erro
 		params = NewCreateExportParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Create_export_",
 		Method:             "POST",
 		PathPattern:        "/{executionId}/exports",
@@ -56,7 +56,7 @@ func (a *Client) CreateGetInputControlsInitialValuesViaPost(params *CreateGetInp
 		params = NewCreateGetInputControlsInitialValuesViaPostParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Create_getInputControlsInitialValuesViaPost_",
 		Method:             "POST",
 		PathPattern:        "/values",
@@ -81,7 +81,7 @@ func (a *Client) CreateGetReportInputControlValuesViaPost(params *CreateGetRepor
 		params = NewCreateGetReportInputControlValuesViaPostParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Create_getReportInputControlValuesViaPost_",
 		Method:             "POST",
 		PathPattern:        "/{inputControlIds: [^;/]+(;[^;/]+)*}/values",
@@ -106,7 +106,7 @@ func (a *Client) CreateGetReportInputParametersForSpecifiedInputControlsViaPost(
 		params = NewCreateGetReportInputParametersForSpecifiedInputControlsViaPostParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Create_getReportInputParametersForSpecifiedInputControlsViaPost_",
 		Method:             "POST",
 		PathPattern:        "/{inputControlIds: [^;/]+(;[^;/]+)*}",
@@ -131,7 +131,7 @@ func (a *Client) CreateGetReportInputParametersViaPost(params *CreateGetReportIn
 		params = NewCreateGetReportInputParametersViaPostParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Create_getReportInputParametersViaPost_",
 		Method:             "POST",
 		PathPattern:        "/{executionId}/parameters",
@@ -156,7 +156,7 @@ func (a *Client) CreateGetReportOutputMetadata(params *CreateGetReportOutputMeta
 		params = NewCreateGetReportOutputMetadataParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Create_getReportOutputMetadata_",
 		Method:             "POST",
 		PathPattern:        "/reportExecutions",
@@ -181,7 +181,7 @@ func (a *Client) CreateGetThumbnailsFormEncoded(params *CreateGetThumbnailsFormE
 		params = NewCreateGetThumbnailsFormEncodedParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Create_getThumbnailsFormEncoded_",
 		Method:             "POST",
 		PathPattern:        "/thumbnails",
@@ -206,7 +206,7 @@ func (a *Client) CreateHandleDirectUpload(params *CreateHandleDirectUploadParams
 		params = NewCreateHandleDirectUploadParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Create_handleDirectUpload_",
 		Method:             "POST",
 		PathPattern:        "/import",
@@ -231,7 +231,7 @@ func (a *Client) CreatePause(params *CreatePauseParams) (*CreatePauseOK, error) 
 		params = NewCreatePauseParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Create_pause_",
 		Method:             "POST",
 		PathPattern:        "/pause",
@@ -256,7 +256,7 @@ func (a *Client) CreateResume(params *CreateResumeParams) (*CreateResumeOK, erro
 		params = NewCreateResumeParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Create_resume_",
 		Method:             "POST",
 		PathPattern:        "/resume",
@@ -281,7 +281,7 @@ func (a *Client) CreateScheduleJobsOnceNow(params *CreateScheduleJobsOnceNowPara
 		params = NewCreateScheduleJobsOnceNowParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Create_scheduleJobsOnceNow_",
 		Method:             "POST",
 		PathPattern:        "/restart",
@@ -306,7 +306,7 @@ func (a *Client) DeleteNameAttributes(params *DeleteNameAttributesParams) (*Dele
 		params = NewDeleteNameAttributesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "DeleteNameAttributes",
 		Method:             "DELETE",
 		PathPattern:        "/{name}/attributes",
@@ -331,7 +331,7 @@ func (a *Client) DeleteNameAttributesAttrName(params *DeleteNameAttributesAttrNa
 		params = NewDeleteNameAttributesAttrNameParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "DeleteNameAttributesAttrName",
 		Method:             "DELETE",
 		PathPattern:        "/{name}/attributes/{attrName}",
@@ -356,7 +356,7 @@ func (a *Client) DeleteClearCache(params *DeleteClearCacheParams) (*DeleteClearC
 		params = NewDeleteClearCacheParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Delete_clearCache_",
 		Method:             "DELETE",
 		PathPattern:        "/{cacheId}",
@@ -381,7 +381,7 @@ func (a *Client) GetReports(params *GetReportsParams) (*GetReportsOK, error) {
 		params = NewGetReportsParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "GetReports",
 		Method:             "GET",
 		PathPattern:        "/reports",
@@ -406,7 +406,7 @@ func (a *Client) GetDateFormatPattern(params *GetDateFormatPatternParams) (*GetD
 		params = NewGetDateFormatPatternParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Get_dateFormatPattern_",
 		Method:             "GET",
 		PathPattern:        "/dateFormatPattern",
@@ -431,7 +431,7 @@ func (a *Client) GetDatetimeFormatPattern(params *GetDatetimeFormatPatternParams
 		params = NewGetDatetimeFormatPatternParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Get_datetimeFormatPattern_",
 		Method:             "GET",
 		PathPattern:        "/datetimeFormatPattern",
@@ -456,7 +456,7 @@ func (a *Client) GetDiscover(params *GetDiscoverParams) (*GetDiscoverOK, error) 
 		params = NewGetDiscoverParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Get_discover_",
 		Method:             "GET",
 		PathPattern:        "/{uri: .+}",
@@ -481,7 +481,7 @@ func (a *Client) GetDownloadFile(params *GetDownloadFileParams) (*GetDownloadFil
 		params = NewGetDownloadFileParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Get_downloadFile_",
 		Method:             "GET",
 		PathPattern:        "/{id}/{name}",
@@ -506,7 +506,7 @@ func (a *Client) PostReportsReportUnitURIInputControls(params *PostReportsReport
 		params = NewPostReportsReportUnitURIInputControlsParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "PostReportsReportUnitURIInputControls",
 		Method:             "POST",
 		PathPattern:        "/reports/{reportUnitURI: .+}/inputControls",
@@ -531,7 +531,7 @@ func (a *Client) PutNameAttributes(params *PutNameAttributesParams) (*PutNameAtt
 		params = NewPutNameAttributesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "PutNameAttributes",
 		Method:             "PUT",
 		PathPattern:        "/{name}/attributes",
@@ -556,7 +556,7 @@ func (a *Client) PutNameAttributesAttrName(params *PutNameAttributesAttrNamePara
 		params = NewPutNameAttributesAttrNameParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "PutNameAttributesAttrName",
 		Method:             "PUT",
 		PathPattern:        "/{name}/attributes/{attrName}",
@@ -581,7 +581,7 @@ func (a *Client) UpdateCancelReportExecution(params *UpdateCancelReportExecution
 		params = NewUpdateCancelReportExecutionParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Update_cancelReportExecution_",
 		Method:             "PUT",
 		PathPattern:        "/{executionId}/status",
@@ -606,7 +606,7 @@ func (a *Client) UpdateDefaultPutHandlerForRoot(params *UpdateDefaultPutHandlerF
 		params = NewUpdateDefaultPutHandlerForRootParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Update_defaultPutHandlerForRoot_",
 		Method:             "PUT",
 		PathPattern:        "/resources",
@@ -631,7 +631,7 @@ func (a *Client) UpdateReorderInputControls(params *UpdateReorderInputControlsPa
 		params = NewUpdateReorderInputControlsParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Update_reorderInputControls_",
 		Method:             "PUT",
 		PathPattern:        "/reports/{reportUnitURI: .+}/inputControls",
@@ -656,7 +656,7 @@ func (a *Client) UpdateScheduleJob(params *UpdateScheduleJobParams) (*UpdateSche
 		params = NewUpdateScheduleJobParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "Update_scheduleJob_",
 		Method:             "PUT",
 		PathPattern:        "/jobs",
@@ -681,7 +681,7 @@ func (a *Client) CreateConnection(params *CreateConnectionParams) (*CreateConnec
 		params = NewCreateConnectionParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createConnection_",
 		Method:             "POST",
 		PathPattern:        "/connections",
@@ -706,7 +706,7 @@ func (a *Client) CreateFileViaFormInRoot(params *CreateFileViaFormInRootParams) 
 		params = NewCreateFileViaFormInRootParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createFileViaFormInRoot_",
 		Method:             "POST",
 		PathPattern:        "/resources",
@@ -731,7 +731,7 @@ func (a *Client) CreateFileViaForm(params *CreateFileViaFormParams) (*CreateFile
 		params = NewCreateFileViaFormParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createFileViaForm_",
 		Method:             "POST",
 		PathPattern:        "/{uri: .+}",
@@ -756,7 +756,7 @@ func (a *Client) CreateNewTask(params *CreateNewTaskParams) (*CreateNewTaskOK, e
 		params = NewCreateNewTaskParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createNewTask_",
 		Method:             "POST",
 		PathPattern:        "/export",
@@ -781,7 +781,7 @@ func (a *Client) CreatePermission(params *CreatePermissionParams) (*CreatePermis
 		params = NewCreatePermissionParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "createPermission_",
 		Method:             "POST",
 		PathPattern:        "/permissions",
@@ -806,7 +806,7 @@ func (a *Client) DeleteAttribute(params *DeleteAttributeParams) (*DeleteAttribut
 		params = NewDeleteAttributeParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteAttribute_",
 		Method:             "DELETE",
 		PathPattern:        "/{attrName}",
@@ -831,7 +831,7 @@ func (a *Client) DeleteAttributes(params *DeleteAttributesParams) (*DeleteAttrib
 		params = NewDeleteAttributesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteAttributes_",
 		Method:             "DELETE",
 		PathPattern:        "/attributes",
@@ -856,7 +856,7 @@ func (a *Client) DeleteCalendar(params *DeleteCalendarParams) (*DeleteCalendarOK
 		params = NewDeleteCalendarParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteCalendar_",
 		Method:             "DELETE",
 		PathPattern:        "/calendars/{calendarName}",
@@ -881,7 +881,7 @@ func (a *Client) DeleteJob(params *DeleteJobParams) (*DeleteJobOK, error) {
 		params = NewDeleteJobParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteJob_",
 		Method:             "DELETE",
 		PathPattern:        "/{id: \\d+}",
@@ -906,7 +906,7 @@ func (a *Client) DeleteJobs(params *DeleteJobsParams) (*DeleteJobsOK, error) {
 		params = NewDeleteJobsParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteJobs_",
 		Method:             "DELETE",
 		PathPattern:        "/jobs",
@@ -931,7 +931,7 @@ func (a *Client) DeletePermissionsEntryPointRoot(params *DeletePermissionsEntryP
 		params = NewDeletePermissionsEntryPointRootParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deletePermissionsEntryPointRoot_",
 		Method:             "DELETE",
 		PathPattern:        "/permissions",
@@ -956,7 +956,7 @@ func (a *Client) DeletePermissionsEntryPoint(params *DeletePermissionsEntryPoint
 		params = NewDeletePermissionsEntryPointParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deletePermissionsEntryPoint_",
 		Method:             "DELETE",
 		PathPattern:        "/{uri:.+}",
@@ -981,7 +981,7 @@ func (a *Client) DeleteResource(params *DeleteResourceParams) (*DeleteResourceOK
 		params = NewDeleteResourceParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteResource_",
 		Method:             "DELETE",
 		PathPattern:        "/{uri: .+}",
@@ -1006,7 +1006,7 @@ func (a *Client) DeleteResources(params *DeleteResourcesParams) (*DeleteResource
 		params = NewDeleteResourcesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteResources_",
 		Method:             "DELETE",
 		PathPattern:        "/resources",
@@ -1031,7 +1031,7 @@ func (a *Client) DeleteRole(params *DeleteRoleParams) (*DeleteRoleOK, error) {
 		params = NewDeleteRoleParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteRole_",
 		Method:             "DELETE",
 		PathPattern:        "/{name}",
@@ -1056,7 +1056,7 @@ func (a *Client) GetAttachment(params *GetAttachmentParams) (*GetAttachmentOK, e
 		params = NewGetAttachmentParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getAttachment_",
 		Method:             "GET",
 		PathPattern:        "/{executionId}/exports/{exportId}/attachments/{attachment}",
@@ -1081,7 +1081,7 @@ func (a *Client) GetAttributesOfUser(params *GetAttributesOfUserParams) (*GetAtt
 		params = NewGetAttributesOfUserParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getAttributesOfUser_",
 		Method:             "GET",
 		PathPattern:        "/{name}/attributes",
@@ -1106,7 +1106,7 @@ func (a *Client) GetAttributes(params *GetAttributesParams) (*GetAttributesOK, e
 		params = NewGetAttributesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getAttributes_",
 		Method:             "GET",
 		PathPattern:        "/attributes",
@@ -1131,7 +1131,7 @@ func (a *Client) GetBundles(params *GetBundlesParams) (*GetBundlesOK, error) {
 		params = NewGetBundlesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getBundles_",
 		Method:             "GET",
 		PathPattern:        "/bundles",
@@ -1156,7 +1156,7 @@ func (a *Client) GetCalendarByName(params *GetCalendarByNameParams) (*GetCalenda
 		params = NewGetCalendarByNameParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getCalendarByName_",
 		Method:             "GET",
 		PathPattern:        "/calendars/{calendarName}",
@@ -1181,7 +1181,7 @@ func (a *Client) GetCalendarNames(params *GetCalendarNamesParams) (*GetCalendarN
 		params = NewGetCalendarNamesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getCalendarNames_",
 		Method:             "GET",
 		PathPattern:        "/calendars",
@@ -1206,7 +1206,7 @@ func (a *Client) GetConnectionDetails(params *GetConnectionDetailsParams) (*GetC
 		params = NewGetConnectionDetailsParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getConnectionDetails_",
 		Method:             "GET",
 		PathPattern:        "/{uuid}",
@@ -1231,7 +1231,7 @@ func (a *Client) GetConnectionMetadata(params *GetConnectionMetadataParams) (*Ge
 		params = NewGetConnectionMetadataParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getConnectionMetadata_",
 		Method:             "GET",
 		PathPattern:        "/{uuid}/metadata",
@@ -1256,7 +1256,7 @@ func (a *Client) GetCustomDataSourceDefinition(params *GetCustomDataSourceDefini
 		params = NewGetCustomDataSourceDefinitionParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getCustomDataSourceDefinition_",
 		Method:             "GET",
 		PathPattern:        "/{name}",
@@ -1281,7 +1281,7 @@ func (a *Client) GetCustomDataSources(params *GetCustomDataSourcesParams) (*GetC
 		params = NewGetCustomDataSourcesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getCustomDataSources_",
 		Method:             "GET",
 		PathPattern:        "/customDataSources",
@@ -1306,7 +1306,7 @@ func (a *Client) GetExportExecutionStatusObject(params *GetExportExecutionStatus
 		params = NewGetExportExecutionStatusObjectParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getExportExecutionStatusObject_",
 		Method:             "GET",
 		PathPattern:        "/{executionId}/exports/{exportId}/status",
@@ -1331,7 +1331,7 @@ func (a *Client) GetFeatures(params *GetFeaturesParams) (*GetFeaturesOK, error) 
 		params = NewGetFeaturesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getFeatures_",
 		Method:             "GET",
 		PathPattern:        "/features",
@@ -1356,7 +1356,7 @@ func (a *Client) GetInputControlsInitialValues(params *GetInputControlsInitialVa
 		params = NewGetInputControlsInitialValuesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getInputControlsInitialValues_",
 		Method:             "GET",
 		PathPattern:        "/values",
@@ -1381,7 +1381,7 @@ func (a *Client) GetJdbcDriversHipermediaRepresentation(params *GetJdbcDriversHi
 		params = NewGetJdbcDriversHipermediaRepresentationParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getJdbcDriversHipermediaRepresentation_",
 		Method:             "GET",
 		PathPattern:        "/jdbcDrivers",
@@ -1406,7 +1406,7 @@ func (a *Client) GetJobState(params *GetJobStateParams) (*GetJobStateOK, error) 
 		params = NewGetJobStateParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getJobState_",
 		Method:             "GET",
 		PathPattern:        "/{id: \\d+}/state",
@@ -1431,7 +1431,7 @@ func (a *Client) GetJobWithProcessedParameters(params *GetJobWithProcessedParame
 		params = NewGetJobWithProcessedParametersParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getJobWithProcessedParameters_",
 		Method:             "GET",
 		PathPattern:        "/{id: \\d+}",
@@ -1456,7 +1456,7 @@ func (a *Client) GetOutputResource(params *GetOutputResourceParams) (*GetOutputR
 		params = NewGetOutputResourceParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getOutputResource_",
 		Method:             "GET",
 		PathPattern:        "/{executionId}/exports/{exportId}/outputResource",
@@ -1481,7 +1481,7 @@ func (a *Client) GetPermissionsEntryPointRoot(params *GetPermissionsEntryPointRo
 		params = NewGetPermissionsEntryPointRootParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getPermissionsEntryPointRoot_",
 		Method:             "GET",
 		PathPattern:        "/permissions",
@@ -1506,7 +1506,7 @@ func (a *Client) GetPermissionsEntryPoint(params *GetPermissionsEntryPointParams
 		params = NewGetPermissionsEntryPointParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getPermissionsEntryPoint_",
 		Method:             "GET",
 		PathPattern:        "/{uri:.+}",
@@ -1531,7 +1531,7 @@ func (a *Client) GetReportExecutionStatusObject(params *GetReportExecutionStatus
 		params = NewGetReportExecutionStatusObjectParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getReportExecutionStatusObject_",
 		Method:             "GET",
 		PathPattern:        "/{executionId}/status",
@@ -1556,7 +1556,7 @@ func (a *Client) GetReportExecution(params *GetReportExecutionParams) (*GetRepor
 		params = NewGetReportExecutionParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getReportExecution_",
 		Method:             "GET",
 		PathPattern:        "/{executionId}",
@@ -1581,7 +1581,7 @@ func (a *Client) GetReportInputControlValues(params *GetReportInputControlValues
 		params = NewGetReportInputControlValuesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getReportInputControlValues_",
 		Method:             "GET",
 		PathPattern:        "/{inputControlIds: [^;/]+(;[^;/]+)*}/values",
@@ -1606,7 +1606,7 @@ func (a *Client) GetReportInputParametersForSpecifiedInputControls(params *GetRe
 		params = NewGetReportInputParametersForSpecifiedInputControlsParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getReportInputParametersForSpecifiedInputControls_",
 		Method:             "GET",
 		PathPattern:        "/{inputControlIds: [^;/]+(;[^;/]+)*}",
@@ -1631,7 +1631,7 @@ func (a *Client) GetReportInputParameters(params *GetReportInputParametersParams
 		params = NewGetReportInputParametersParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getReportInputParameters_",
 		Method:             "GET",
 		PathPattern:        "/reports/{reportUnitURI: .+}/inputControls",
@@ -1656,7 +1656,7 @@ func (a *Client) GetReportJobs(params *GetReportJobsParams) (*GetReportJobsOK, e
 		params = NewGetReportJobsParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getReportJobs_",
 		Method:             "GET",
 		PathPattern:        "/jobs",
@@ -1681,7 +1681,7 @@ func (a *Client) GetReportOutputResource(params *GetReportOutputResourceParams) 
 		params = NewGetReportOutputResourceParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getReportOutputResource_",
 		Method:             "GET",
 		PathPattern:        "/{reportUnitURI: .+}.{outputFormat}",
@@ -1706,7 +1706,7 @@ func (a *Client) GetReportsRuntimeInformation(params *GetReportsRuntimeInformati
 		params = NewGetReportsRuntimeInformationParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getReportsRuntimeInformation_",
 		Method:             "GET",
 		PathPattern:        "/reportExecutions",
@@ -1731,7 +1731,7 @@ func (a *Client) GetResources(params *GetResourcesParams) (*GetResourcesOK, erro
 		params = NewGetResourcesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getResources_",
 		Method:             "GET",
 		PathPattern:        "/resources",
@@ -1756,7 +1756,7 @@ func (a *Client) GetRoles(params *GetRolesParams) (*GetRolesOK, error) {
 		params = NewGetRolesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getRoles_",
 		Method:             "GET",
 		PathPattern:        "/roles",
@@ -1781,7 +1781,7 @@ func (a *Client) GetServerBuild(params *GetServerBuildParams) (*GetServerBuildOK
 		params = NewGetServerBuildParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getServerBuild_",
 		Method:             "GET",
 		PathPattern:        "/build",
@@ -1806,7 +1806,7 @@ func (a *Client) GetServerEditionName(params *GetServerEditionNameParams) (*GetS
 		params = NewGetServerEditionNameParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getServerEditionName_",
 		Method:             "GET",
 		PathPattern:        "/editionName",
@@ -1831,7 +1831,7 @@ func (a *Client) GetServerEdition(params *GetServerEditionParams) (*GetServerEdi
 		params = NewGetServerEditionParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getServerEdition_",
 		Method:             "GET",
 		PathPattern:        "/edition",
@@ -1856,7 +1856,7 @@ func (a *Client) GetServerExpiration(params *GetServerExpirationParams) (*GetSer
 		params = NewGetServerExpirationParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getServerExpiration_",
 		Method:             "GET",
 		PathPattern:        "/expiration",
@@ -1881,7 +1881,7 @@ func (a *Client) GetServerInfo(params *GetServerInfoParams) (*GetServerInfoOK, e
 		params = NewGetServerInfoParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getServerInfo_",
 		Method:             "GET",
 		PathPattern:        "/serverInfo",
@@ -1906,7 +1906,7 @@ func (a *Client) GetServerLicenseType(params *GetServerLicenseTypeParams) (*GetS
 		params = NewGetServerLicenseTypeParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getServerLicenseType_",
 		Method:             "GET",
 		PathPattern:        "/licenseType",
@@ -1931,7 +1931,7 @@ func (a *Client) GetServerVersion(params *GetServerVersionParams) (*GetServerVer
 		params = NewGetServerVersionParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getServerVersion_",
 		Method:             "GET",
 		PathPattern:        "/version",
@@ -1956,7 +1956,7 @@ func (a *Client) GetSettingsGroup(params *GetSettingsGroupParams) (*GetSettingsG
 		params = NewGetSettingsGroupParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getSettingsGroup_",
 		Method:             "GET",
 		PathPattern:        "/{groupId}",
@@ -1981,7 +1981,7 @@ func (a *Client) GetSpecificAttributeOfUser(params *GetSpecificAttributeOfUserPa
 		params = NewGetSpecificAttributeOfUserParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getSpecificAttributeOfUser_",
 		Method:             "GET",
 		PathPattern:        "/{name}/attributes/{attrName}",
@@ -2006,7 +2006,7 @@ func (a *Client) GetSpecificAttribute(params *GetSpecificAttributeParams) (*GetS
 		params = NewGetSpecificAttributeParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getSpecificAttribute_",
 		Method:             "GET",
 		PathPattern:        "/{attrName}",
@@ -2031,7 +2031,7 @@ func (a *Client) GetStateOfTheTask(params *GetStateOfTheTaskParams) (*GetStateOf
 		params = NewGetStateOfTheTaskParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getStateOfTheTask_",
 		Method:             "GET",
 		PathPattern:        "/{id}/state",
@@ -2056,7 +2056,7 @@ func (a *Client) GetTasksIds(params *GetTasksIdsParams) (*GetTasksIdsOK, error) 
 		params = NewGetTasksIdsParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getTasksIds_",
 		Method:             "GET",
 		PathPattern:        "/import",
@@ -2081,7 +2081,7 @@ func (a *Client) GetThumbnails(params *GetThumbnailsParams) (*GetThumbnailsOK, e
 		params = NewGetThumbnailsParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getThumbnails_",
 		Method:             "GET",
 		PathPattern:        "/thumbnails",
@@ -2106,7 +2106,7 @@ func (a *Client) GetUsers(params *GetUsersParams) (*GetUsersOK, error) {
 		params = NewGetUsersParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getUsers_",
 		Method:             "GET",
 		PathPattern:        "/users",
@@ -2131,7 +2131,7 @@ func (a *Client) ModifyConnection(params *ModifyConnectionParams) (*ModifyConnec
 		params = NewModifyConnectionParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "modifyConnection_",
 		Method:             "PUT",
 		PathPattern:        "/{uuid}",
@@ -2156,7 +2156,7 @@ func (a *Client) PatchResource(params *PatchResourceParams) (*PatchResourceOK, e
 		params = NewPatchResourceParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "patchResource_",
 		Method:             "PATCH",
 		PathPattern:        "/{uri: .+}",
@@ -2181,7 +2181,7 @@ func (a *Client) PutAttribute(params *PutAttributeParams) (*PutAttributeOK, erro
 		params = NewPutAttributeParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "putAttribute_",
 		Method:             "PUT",
 		PathPattern:        "/{attrName}",
@@ -2206,7 +2206,7 @@ func (a *Client) PutAttributes(params *PutAttributesParams) (*PutAttributesOK, e
 		params = NewPutAttributesParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "putAttributes_",
 		Method:             "PUT",
 		PathPattern:        "/attributes",
@@ -2231,7 +2231,7 @@ func (a *Client) PutCalendar(params *PutCalendarParams) (*PutCalendarOK, error) 
 		params = NewPutCalendarParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "putCalendar_",
 		Method:             "PUT",
 		PathPattern:        "/calendars/{calendarName}",
@@ -2256,7 +2256,7 @@ func (a *Client) RemoveConnectionDetails(params *RemoveConnectionDetailsParams) 
 		params = NewRemoveConnectionDetailsParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "removeConnectionDetails_",
 		Method:             "DELETE",
 		PathPattern:        "/{uuid}",
@@ -2281,7 +2281,7 @@ func (a *Client) UpdateFileViaForm(params *UpdateFileViaFormParams) (*UpdateFile
 		params = NewUpdateFileViaFormParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "updateFileViaForm_",
 		Method:             "PUT",
 		PathPattern:        "/{uri: .+}",
@@ -2306,7 +2306,7 @@ func (a *Client) UpdateJob(params *UpdateJobParams) (*UpdateJobOK, error) {
 		params = NewUpdateJobParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "updateJob_",
 		Method:             "POST",
 		PathPattern:        "/{id: \\d+}",
@@ -2331,7 +2331,7 @@ func (a *Client) UpdateJobs(params *UpdateJobsParams) (*UpdateJobsOK, error) {
 		params = NewUpdateJobsParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "updateJobs_",
 		Method:             "POST",
 		PathPattern:        "/jobs",
@@ -2356,7 +2356,7 @@ func (a *Client) UpdatePermissionRoot(params *UpdatePermissionRootParams) (*Upda
 		params = NewUpdatePermissionRootParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "updatePermissionRoot_",
 		Method:             "PUT",
 		PathPattern:        "/permissions",
@@ -2381,7 +2381,7 @@ func (a *Client) UpdatePermission(params *UpdatePermissionParams) (*UpdatePermis
 		params = NewUpdatePermissionParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "updatePermission_",
 		Method:             "PUT",
 		PathPattern:        "/{uri:.+}",
@@ -2406,7 +2406,7 @@ func (a *Client) UpdateRole(params *UpdateRoleParams) (*UpdateRoleOK, error) {
 		params = NewUpdateRoleParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "updateRole_",
 		Method:             "PUT",
 		PathPattern:        "/{name}",
@@ -2431,7 +2431,7 @@ func (a *Client) UploadDriver(params *UploadDriverParams) (*UploadDriverOK, erro
 		params = NewUploadDriverParams()
 	}
 
-	result, err := a.transport.Submit(&client.Operation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "uploadDriver_",
 		Method:             "POST",
 		PathPattern:        "/jdbcDrivers",
@@ -2448,6 +2448,6 @@ func (a *Client) UploadDriver(params *UploadDriverParams) (*UploadDriverOK, erro
 }
 
 // SetTransport changes the transport on the client
-func (a *Client) SetTransport(transport client.Transport) {
+func (a *Client) SetTransport(transport runtime.ClientTransport) {
 	a.transport = transport
 }

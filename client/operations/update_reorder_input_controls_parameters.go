@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewUpdateReorderInputControlsParams creates a new UpdateReorderInputControlsParams object
 // with the default values initialized.
 func NewUpdateReorderInputControlsParams() *UpdateReorderInputControlsParams {
 	var ()
-	return &UpdateReorderInputControlsParams{}
+	return &UpdateReorderInputControlsParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewUpdateReorderInputControlsParamsWithTimeout creates a new UpdateReorderInputControlsParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewUpdateReorderInputControlsParamsWithTimeout(timeout time.Duration) *UpdateReorderInputControlsParams {
+	var ()
+	return &UpdateReorderInputControlsParams{
+
+		timeout: timeout,
+	}
 }
 
 /*UpdateReorderInputControlsParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type UpdateReorderInputControlsParams struct {
 
 	/*ReportUnitURI*/
 	ReportUnitURI *string
+
+	timeout time.Duration
 }
 
 // WithReportUnitURI adds the reportUnitUri to the update reorder input controls params
-func (o *UpdateReorderInputControlsParams) WithReportUnitURI(reportUnitUri *string) *UpdateReorderInputControlsParams {
-	o.ReportUnitURI = reportUnitUri
+func (o *UpdateReorderInputControlsParams) WithReportUnitURI(ReportUnitURI *string) *UpdateReorderInputControlsParams {
+	o.ReportUnitURI = ReportUnitURI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *UpdateReorderInputControlsParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *UpdateReorderInputControlsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ReportUnitURI != nil {

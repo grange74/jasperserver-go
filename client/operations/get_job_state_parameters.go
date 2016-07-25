@@ -4,18 +4,34 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetJobStateParams creates a new GetJobStateParams object
 // with the default values initialized.
 func NewGetJobStateParams() *GetJobStateParams {
 	var ()
-	return &GetJobStateParams{}
+	return &GetJobStateParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetJobStateParamsWithTimeout creates a new GetJobStateParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetJobStateParamsWithTimeout(timeout time.Duration) *GetJobStateParams {
+	var ()
+	return &GetJobStateParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetJobStateParams contains all the parameters to send to the API endpoint
@@ -25,17 +41,20 @@ type GetJobStateParams struct {
 
 	/*ID*/
 	ID *int64
+
+	timeout time.Duration
 }
 
 // WithID adds the id to the get job state params
-func (o *GetJobStateParams) WithID(id *int64) *GetJobStateParams {
-	o.ID = id
+func (o *GetJobStateParams) WithID(ID *int64) *GetJobStateParams {
+	o.ID = ID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetJobStateParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetJobStateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ID != nil {

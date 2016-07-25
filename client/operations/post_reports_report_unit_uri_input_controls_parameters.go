@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewPostReportsReportUnitURIInputControlsParams creates a new PostReportsReportUnitURIInputControlsParams object
 // with the default values initialized.
 func NewPostReportsReportUnitURIInputControlsParams() *PostReportsReportUnitURIInputControlsParams {
 	var ()
-	return &PostReportsReportUnitURIInputControlsParams{}
+	return &PostReportsReportUnitURIInputControlsParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewPostReportsReportUnitURIInputControlsParamsWithTimeout creates a new PostReportsReportUnitURIInputControlsParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewPostReportsReportUnitURIInputControlsParamsWithTimeout(timeout time.Duration) *PostReportsReportUnitURIInputControlsParams {
+	var ()
+	return &PostReportsReportUnitURIInputControlsParams{
+
+		timeout: timeout,
+	}
 }
 
 /*PostReportsReportUnitURIInputControlsParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type PostReportsReportUnitURIInputControlsParams struct {
 
 	/*ReportUnitURI*/
 	ReportUnitURI *string
+
+	timeout time.Duration
 }
 
 // WithReportUnitURI adds the reportUnitUri to the post reports report unit URI input controls params
-func (o *PostReportsReportUnitURIInputControlsParams) WithReportUnitURI(reportUnitUri *string) *PostReportsReportUnitURIInputControlsParams {
-	o.ReportUnitURI = reportUnitUri
+func (o *PostReportsReportUnitURIInputControlsParams) WithReportUnitURI(ReportUnitURI *string) *PostReportsReportUnitURIInputControlsParams {
+	o.ReportUnitURI = ReportUnitURI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *PostReportsReportUnitURIInputControlsParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *PostReportsReportUnitURIInputControlsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ReportUnitURI != nil {

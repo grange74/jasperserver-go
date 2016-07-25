@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetDownloadFileParams creates a new GetDownloadFileParams object
 // with the default values initialized.
 func NewGetDownloadFileParams() *GetDownloadFileParams {
 	var ()
-	return &GetDownloadFileParams{}
+	return &GetDownloadFileParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetDownloadFileParamsWithTimeout creates a new GetDownloadFileParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetDownloadFileParamsWithTimeout(timeout time.Duration) *GetDownloadFileParams {
+	var ()
+	return &GetDownloadFileParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetDownloadFileParams contains all the parameters to send to the API endpoint
@@ -26,23 +42,26 @@ type GetDownloadFileParams struct {
 	ID *string
 	/*Name*/
 	Name *string
+
+	timeout time.Duration
 }
 
 // WithID adds the id to the get download file params
-func (o *GetDownloadFileParams) WithID(id *string) *GetDownloadFileParams {
-	o.ID = id
+func (o *GetDownloadFileParams) WithID(ID *string) *GetDownloadFileParams {
+	o.ID = ID
 	return o
 }
 
 // WithName adds the name to the get download file params
-func (o *GetDownloadFileParams) WithName(name *string) *GetDownloadFileParams {
-	o.Name = name
+func (o *GetDownloadFileParams) WithName(Name *string) *GetDownloadFileParams {
+	o.Name = Name
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetDownloadFileParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetDownloadFileParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ID != nil {

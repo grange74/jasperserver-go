@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewCreateConnectionParams creates a new CreateConnectionParams object
 // with the default values initialized.
 func NewCreateConnectionParams() *CreateConnectionParams {
 	var ()
-	return &CreateConnectionParams{}
+	return &CreateConnectionParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewCreateConnectionParamsWithTimeout creates a new CreateConnectionParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewCreateConnectionParamsWithTimeout(timeout time.Duration) *CreateConnectionParams {
+	var ()
+	return &CreateConnectionParams{
+
+		timeout: timeout,
+	}
 }
 
 /*CreateConnectionParams contains all the parameters to send to the API endpoint
@@ -26,23 +42,26 @@ type CreateConnectionParams struct {
 	Accept *string
 	/*ContentType*/
 	ContentType *string
+
+	timeout time.Duration
 }
 
 // WithAccept adds the accept to the create connection params
-func (o *CreateConnectionParams) WithAccept(accept *string) *CreateConnectionParams {
-	o.Accept = accept
+func (o *CreateConnectionParams) WithAccept(Accept *string) *CreateConnectionParams {
+	o.Accept = Accept
 	return o
 }
 
 // WithContentType adds the contentType to the create connection params
-func (o *CreateConnectionParams) WithContentType(contentType *string) *CreateConnectionParams {
-	o.ContentType = contentType
+func (o *CreateConnectionParams) WithContentType(ContentType *string) *CreateConnectionParams {
+	o.ContentType = ContentType
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *CreateConnectionParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *CreateConnectionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Accept != nil {

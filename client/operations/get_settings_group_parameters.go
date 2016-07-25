@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetSettingsGroupParams creates a new GetSettingsGroupParams object
 // with the default values initialized.
 func NewGetSettingsGroupParams() *GetSettingsGroupParams {
 	var ()
-	return &GetSettingsGroupParams{}
+	return &GetSettingsGroupParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetSettingsGroupParamsWithTimeout creates a new GetSettingsGroupParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetSettingsGroupParamsWithTimeout(timeout time.Duration) *GetSettingsGroupParams {
+	var ()
+	return &GetSettingsGroupParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetSettingsGroupParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type GetSettingsGroupParams struct {
 
 	/*GroupID*/
 	GroupID *string
+
+	timeout time.Duration
 }
 
 // WithGroupID adds the groupId to the get settings group params
-func (o *GetSettingsGroupParams) WithGroupID(groupId *string) *GetSettingsGroupParams {
-	o.GroupID = groupId
+func (o *GetSettingsGroupParams) WithGroupID(GroupID *string) *GetSettingsGroupParams {
+	o.GroupID = GroupID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetSettingsGroupParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetSettingsGroupParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.GroupID != nil {

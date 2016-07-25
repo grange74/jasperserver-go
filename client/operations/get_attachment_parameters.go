@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetAttachmentParams creates a new GetAttachmentParams object
 // with the default values initialized.
 func NewGetAttachmentParams() *GetAttachmentParams {
 	var ()
-	return &GetAttachmentParams{}
+	return &GetAttachmentParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetAttachmentParamsWithTimeout creates a new GetAttachmentParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetAttachmentParamsWithTimeout(timeout time.Duration) *GetAttachmentParams {
+	var ()
+	return &GetAttachmentParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetAttachmentParams contains all the parameters to send to the API endpoint
@@ -28,29 +44,32 @@ type GetAttachmentParams struct {
 	ExecutionID *string
 	/*ExportID*/
 	ExportID *string
+
+	timeout time.Duration
 }
 
 // WithAttachment adds the attachment to the get attachment params
-func (o *GetAttachmentParams) WithAttachment(attachment *string) *GetAttachmentParams {
-	o.Attachment = attachment
+func (o *GetAttachmentParams) WithAttachment(Attachment *string) *GetAttachmentParams {
+	o.Attachment = Attachment
 	return o
 }
 
 // WithExecutionID adds the executionId to the get attachment params
-func (o *GetAttachmentParams) WithExecutionID(executionId *string) *GetAttachmentParams {
-	o.ExecutionID = executionId
+func (o *GetAttachmentParams) WithExecutionID(ExecutionID *string) *GetAttachmentParams {
+	o.ExecutionID = ExecutionID
 	return o
 }
 
 // WithExportID adds the exportId to the get attachment params
-func (o *GetAttachmentParams) WithExportID(exportId *string) *GetAttachmentParams {
-	o.ExportID = exportId
+func (o *GetAttachmentParams) WithExportID(ExportID *string) *GetAttachmentParams {
+	o.ExportID = ExportID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetAttachmentParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetAttachmentParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Attachment != nil {

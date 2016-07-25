@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewDeleteNameAttributesAttrNameParams creates a new DeleteNameAttributesAttrNameParams object
 // with the default values initialized.
 func NewDeleteNameAttributesAttrNameParams() *DeleteNameAttributesAttrNameParams {
 	var ()
-	return &DeleteNameAttributesAttrNameParams{}
+	return &DeleteNameAttributesAttrNameParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewDeleteNameAttributesAttrNameParamsWithTimeout creates a new DeleteNameAttributesAttrNameParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewDeleteNameAttributesAttrNameParamsWithTimeout(timeout time.Duration) *DeleteNameAttributesAttrNameParams {
+	var ()
+	return &DeleteNameAttributesAttrNameParams{
+
+		timeout: timeout,
+	}
 }
 
 /*DeleteNameAttributesAttrNameParams contains all the parameters to send to the API endpoint
@@ -30,35 +46,38 @@ type DeleteNameAttributesAttrNameParams struct {
 	AttrName *string
 	/*Name*/
 	Name *string
+
+	timeout time.Duration
 }
 
 // WithAccept adds the accept to the delete name attributes attr name params
-func (o *DeleteNameAttributesAttrNameParams) WithAccept(accept *string) *DeleteNameAttributesAttrNameParams {
-	o.Accept = accept
+func (o *DeleteNameAttributesAttrNameParams) WithAccept(Accept *string) *DeleteNameAttributesAttrNameParams {
+	o.Accept = Accept
 	return o
 }
 
 // WithEmbedded adds the embedded to the delete name attributes attr name params
-func (o *DeleteNameAttributesAttrNameParams) WithEmbedded(embedded *string) *DeleteNameAttributesAttrNameParams {
-	o.Embedded = embedded
+func (o *DeleteNameAttributesAttrNameParams) WithEmbedded(Embedded *string) *DeleteNameAttributesAttrNameParams {
+	o.Embedded = Embedded
 	return o
 }
 
 // WithAttrName adds the attrName to the delete name attributes attr name params
-func (o *DeleteNameAttributesAttrNameParams) WithAttrName(attrName *string) *DeleteNameAttributesAttrNameParams {
-	o.AttrName = attrName
+func (o *DeleteNameAttributesAttrNameParams) WithAttrName(AttrName *string) *DeleteNameAttributesAttrNameParams {
+	o.AttrName = AttrName
 	return o
 }
 
 // WithName adds the name to the delete name attributes attr name params
-func (o *DeleteNameAttributesAttrNameParams) WithName(name *string) *DeleteNameAttributesAttrNameParams {
-	o.Name = name
+func (o *DeleteNameAttributesAttrNameParams) WithName(Name *string) *DeleteNameAttributesAttrNameParams {
+	o.Name = Name
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *DeleteNameAttributesAttrNameParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *DeleteNameAttributesAttrNameParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Accept != nil {

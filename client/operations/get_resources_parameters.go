@@ -4,11 +4,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetResourcesParams creates a new GetResourcesParams object
@@ -25,6 +28,27 @@ func NewGetResourcesParams() *GetResourcesParams {
 		ForceTotalCount: &forceTotalCountDefault,
 		Recursive:       &recursiveDefault,
 		ShowHiddenItems: &showHiddenItemsDefault,
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetResourcesParamsWithTimeout creates a new GetResourcesParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetResourcesParamsWithTimeout(timeout time.Duration) *GetResourcesParams {
+	var (
+		forceFullPageDefault   bool = bool(false)
+		forceTotalCountDefault bool = bool(false)
+		recursiveDefault       bool = bool(true)
+		showHiddenItemsDefault bool = bool(false)
+	)
+	return &GetResourcesParams{
+		ForceFullPage:   &forceFullPageDefault,
+		ForceTotalCount: &forceTotalCountDefault,
+		Recursive:       &recursiveDefault,
+		ShowHiddenItems: &showHiddenItemsDefault,
+
+		timeout: timeout,
 	}
 }
 
@@ -61,95 +85,98 @@ type GetResourcesParams struct {
 	SortBy *string
 	/*Type*/
 	Type *string
+
+	timeout time.Duration
 }
 
 // WithAccept adds the accept to the get resources params
-func (o *GetResourcesParams) WithAccept(accept *string) *GetResourcesParams {
-	o.Accept = accept
+func (o *GetResourcesParams) WithAccept(Accept *string) *GetResourcesParams {
+	o.Accept = Accept
 	return o
 }
 
 // WithAccessType adds the accessType to the get resources params
-func (o *GetResourcesParams) WithAccessType(accessType *string) *GetResourcesParams {
-	o.AccessType = accessType
+func (o *GetResourcesParams) WithAccessType(AccessType *string) *GetResourcesParams {
+	o.AccessType = AccessType
 	return o
 }
 
 // WithExcludeFolder adds the excludeFolder to the get resources params
-func (o *GetResourcesParams) WithExcludeFolder(excludeFolder *string) *GetResourcesParams {
-	o.ExcludeFolder = excludeFolder
+func (o *GetResourcesParams) WithExcludeFolder(ExcludeFolder *string) *GetResourcesParams {
+	o.ExcludeFolder = ExcludeFolder
 	return o
 }
 
 // WithExpanded adds the expanded to the get resources params
-func (o *GetResourcesParams) WithExpanded(expanded *bool) *GetResourcesParams {
-	o.Expanded = expanded
+func (o *GetResourcesParams) WithExpanded(Expanded *bool) *GetResourcesParams {
+	o.Expanded = Expanded
 	return o
 }
 
 // WithFolderURI adds the folderUri to the get resources params
-func (o *GetResourcesParams) WithFolderURI(folderUri *string) *GetResourcesParams {
-	o.FolderURI = folderUri
+func (o *GetResourcesParams) WithFolderURI(FolderURI *string) *GetResourcesParams {
+	o.FolderURI = FolderURI
 	return o
 }
 
 // WithForceFullPage adds the forceFullPage to the get resources params
-func (o *GetResourcesParams) WithForceFullPage(forceFullPage *bool) *GetResourcesParams {
-	o.ForceFullPage = forceFullPage
+func (o *GetResourcesParams) WithForceFullPage(ForceFullPage *bool) *GetResourcesParams {
+	o.ForceFullPage = ForceFullPage
 	return o
 }
 
 // WithForceTotalCount adds the forceTotalCount to the get resources params
-func (o *GetResourcesParams) WithForceTotalCount(forceTotalCount *bool) *GetResourcesParams {
-	o.ForceTotalCount = forceTotalCount
+func (o *GetResourcesParams) WithForceTotalCount(ForceTotalCount *bool) *GetResourcesParams {
+	o.ForceTotalCount = ForceTotalCount
 	return o
 }
 
 // WithLimit adds the limit to the get resources params
-func (o *GetResourcesParams) WithLimit(limit *int32) *GetResourcesParams {
-	o.Limit = limit
+func (o *GetResourcesParams) WithLimit(Limit *int32) *GetResourcesParams {
+	o.Limit = Limit
 	return o
 }
 
 // WithOffset adds the offset to the get resources params
-func (o *GetResourcesParams) WithOffset(offset *int32) *GetResourcesParams {
-	o.Offset = offset
+func (o *GetResourcesParams) WithOffset(Offset *int32) *GetResourcesParams {
+	o.Offset = Offset
 	return o
 }
 
 // WithQ adds the q to the get resources params
-func (o *GetResourcesParams) WithQ(q *string) *GetResourcesParams {
-	o.Q = q
+func (o *GetResourcesParams) WithQ(Q *string) *GetResourcesParams {
+	o.Q = Q
 	return o
 }
 
 // WithRecursive adds the recursive to the get resources params
-func (o *GetResourcesParams) WithRecursive(recursive *bool) *GetResourcesParams {
-	o.Recursive = recursive
+func (o *GetResourcesParams) WithRecursive(Recursive *bool) *GetResourcesParams {
+	o.Recursive = Recursive
 	return o
 }
 
 // WithShowHiddenItems adds the showHiddenItems to the get resources params
-func (o *GetResourcesParams) WithShowHiddenItems(showHiddenItems *bool) *GetResourcesParams {
-	o.ShowHiddenItems = showHiddenItems
+func (o *GetResourcesParams) WithShowHiddenItems(ShowHiddenItems *bool) *GetResourcesParams {
+	o.ShowHiddenItems = ShowHiddenItems
 	return o
 }
 
 // WithSortBy adds the sortBy to the get resources params
-func (o *GetResourcesParams) WithSortBy(sortBy *string) *GetResourcesParams {
-	o.SortBy = sortBy
+func (o *GetResourcesParams) WithSortBy(SortBy *string) *GetResourcesParams {
+	o.SortBy = SortBy
 	return o
 }
 
 // WithType adds the type to the get resources params
-func (o *GetResourcesParams) WithType(resType *string) *GetResourcesParams {
-	o.Type = resType
+func (o *GetResourcesParams) WithType(Type *string) *GetResourcesParams {
+	o.Type = Type
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetResourcesParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetResourcesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Accept != nil {

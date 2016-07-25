@@ -4,18 +4,34 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetReportJobsParams creates a new GetReportJobsParams object
 // with the default values initialized.
 func NewGetReportJobsParams() *GetReportJobsParams {
 	var ()
-	return &GetReportJobsParams{}
+	return &GetReportJobsParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetReportJobsParamsWithTimeout creates a new GetReportJobsParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetReportJobsParamsWithTimeout(timeout time.Duration) *GetReportJobsParams {
+	var ()
+	return &GetReportJobsParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetReportJobsParams contains all the parameters to send to the API endpoint
@@ -45,77 +61,80 @@ type GetReportJobsParams struct {
 	StartIndex *int32
 	/*State*/
 	State *string
+
+	timeout time.Duration
 }
 
 // WithExample adds the example to the get report jobs params
-func (o *GetReportJobsParams) WithExample(example *string) *GetReportJobsParams {
-	o.Example = example
+func (o *GetReportJobsParams) WithExample(Example *string) *GetReportJobsParams {
+	o.Example = Example
 	return o
 }
 
 // WithIsAscending adds the isAscending to the get report jobs params
-func (o *GetReportJobsParams) WithIsAscending(isAscending *bool) *GetReportJobsParams {
-	o.IsAscending = isAscending
+func (o *GetReportJobsParams) WithIsAscending(IsAscending *bool) *GetReportJobsParams {
+	o.IsAscending = IsAscending
 	return o
 }
 
 // WithLabel adds the label to the get report jobs params
-func (o *GetReportJobsParams) WithLabel(label *string) *GetReportJobsParams {
-	o.Label = label
+func (o *GetReportJobsParams) WithLabel(Label *string) *GetReportJobsParams {
+	o.Label = Label
 	return o
 }
 
 // WithNextFireTime adds the nextFireTime to the get report jobs params
-func (o *GetReportJobsParams) WithNextFireTime(nextFireTime *string) *GetReportJobsParams {
-	o.NextFireTime = nextFireTime
+func (o *GetReportJobsParams) WithNextFireTime(NextFireTime *string) *GetReportJobsParams {
+	o.NextFireTime = NextFireTime
 	return o
 }
 
 // WithNumberOfRows adds the numberOfRows to the get report jobs params
-func (o *GetReportJobsParams) WithNumberOfRows(numberOfRows *int32) *GetReportJobsParams {
-	o.NumberOfRows = numberOfRows
+func (o *GetReportJobsParams) WithNumberOfRows(NumberOfRows *int32) *GetReportJobsParams {
+	o.NumberOfRows = NumberOfRows
 	return o
 }
 
 // WithOwner adds the owner to the get report jobs params
-func (o *GetReportJobsParams) WithOwner(owner *string) *GetReportJobsParams {
-	o.Owner = owner
+func (o *GetReportJobsParams) WithOwner(Owner *string) *GetReportJobsParams {
+	o.Owner = Owner
 	return o
 }
 
 // WithPreviousFireTime adds the previousFireTime to the get report jobs params
-func (o *GetReportJobsParams) WithPreviousFireTime(previousFireTime *string) *GetReportJobsParams {
-	o.PreviousFireTime = previousFireTime
+func (o *GetReportJobsParams) WithPreviousFireTime(PreviousFireTime *string) *GetReportJobsParams {
+	o.PreviousFireTime = PreviousFireTime
 	return o
 }
 
 // WithReportUnitURI adds the reportUnitUri to the get report jobs params
-func (o *GetReportJobsParams) WithReportUnitURI(reportUnitUri *string) *GetReportJobsParams {
-	o.ReportUnitURI = reportUnitUri
+func (o *GetReportJobsParams) WithReportUnitURI(ReportUnitURI *string) *GetReportJobsParams {
+	o.ReportUnitURI = ReportUnitURI
 	return o
 }
 
 // WithSortType adds the sortType to the get report jobs params
-func (o *GetReportJobsParams) WithSortType(sortType *string) *GetReportJobsParams {
-	o.SortType = sortType
+func (o *GetReportJobsParams) WithSortType(SortType *string) *GetReportJobsParams {
+	o.SortType = SortType
 	return o
 }
 
 // WithStartIndex adds the startIndex to the get report jobs params
-func (o *GetReportJobsParams) WithStartIndex(startIndex *int32) *GetReportJobsParams {
-	o.StartIndex = startIndex
+func (o *GetReportJobsParams) WithStartIndex(StartIndex *int32) *GetReportJobsParams {
+	o.StartIndex = StartIndex
 	return o
 }
 
 // WithState adds the state to the get report jobs params
-func (o *GetReportJobsParams) WithState(state *string) *GetReportJobsParams {
-	o.State = state
+func (o *GetReportJobsParams) WithState(State *string) *GetReportJobsParams {
+	o.State = State
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetReportJobsParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetReportJobsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Example != nil {

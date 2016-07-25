@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetAttributesOfUserParams creates a new GetAttributesOfUserParams object
 // with the default values initialized.
 func NewGetAttributesOfUserParams() *GetAttributesOfUserParams {
 	var ()
-	return &GetAttributesOfUserParams{}
+	return &GetAttributesOfUserParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetAttributesOfUserParamsWithTimeout creates a new GetAttributesOfUserParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetAttributesOfUserParamsWithTimeout(timeout time.Duration) *GetAttributesOfUserParams {
+	var ()
+	return &GetAttributesOfUserParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetAttributesOfUserParams contains all the parameters to send to the API endpoint
@@ -28,29 +44,32 @@ type GetAttributesOfUserParams struct {
 	Embedded *string
 	/*Name*/
 	Name *string
+
+	timeout time.Duration
 }
 
 // WithAccept adds the accept to the get attributes of user params
-func (o *GetAttributesOfUserParams) WithAccept(accept *string) *GetAttributesOfUserParams {
-	o.Accept = accept
+func (o *GetAttributesOfUserParams) WithAccept(Accept *string) *GetAttributesOfUserParams {
+	o.Accept = Accept
 	return o
 }
 
 // WithEmbedded adds the embedded to the get attributes of user params
-func (o *GetAttributesOfUserParams) WithEmbedded(embedded *string) *GetAttributesOfUserParams {
-	o.Embedded = embedded
+func (o *GetAttributesOfUserParams) WithEmbedded(Embedded *string) *GetAttributesOfUserParams {
+	o.Embedded = Embedded
 	return o
 }
 
 // WithName adds the name to the get attributes of user params
-func (o *GetAttributesOfUserParams) WithName(name *string) *GetAttributesOfUserParams {
-	o.Name = name
+func (o *GetAttributesOfUserParams) WithName(Name *string) *GetAttributesOfUserParams {
+	o.Name = Name
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetAttributesOfUserParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetAttributesOfUserParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Accept != nil {

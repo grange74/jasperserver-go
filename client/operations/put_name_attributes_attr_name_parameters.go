@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewPutNameAttributesAttrNameParams creates a new PutNameAttributesAttrNameParams object
 // with the default values initialized.
 func NewPutNameAttributesAttrNameParams() *PutNameAttributesAttrNameParams {
 	var ()
-	return &PutNameAttributesAttrNameParams{}
+	return &PutNameAttributesAttrNameParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewPutNameAttributesAttrNameParamsWithTimeout creates a new PutNameAttributesAttrNameParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewPutNameAttributesAttrNameParamsWithTimeout(timeout time.Duration) *PutNameAttributesAttrNameParams {
+	var ()
+	return &PutNameAttributesAttrNameParams{
+
+		timeout: timeout,
+	}
 }
 
 /*PutNameAttributesAttrNameParams contains all the parameters to send to the API endpoint
@@ -32,41 +48,44 @@ type PutNameAttributesAttrNameParams struct {
 	AttrName *string
 	/*Name*/
 	Name *string
+
+	timeout time.Duration
 }
 
 // WithAccept adds the accept to the put name attributes attr name params
-func (o *PutNameAttributesAttrNameParams) WithAccept(accept *string) *PutNameAttributesAttrNameParams {
-	o.Accept = accept
+func (o *PutNameAttributesAttrNameParams) WithAccept(Accept *string) *PutNameAttributesAttrNameParams {
+	o.Accept = Accept
 	return o
 }
 
 // WithContentType adds the contentType to the put name attributes attr name params
-func (o *PutNameAttributesAttrNameParams) WithContentType(contentType *string) *PutNameAttributesAttrNameParams {
-	o.ContentType = contentType
+func (o *PutNameAttributesAttrNameParams) WithContentType(ContentType *string) *PutNameAttributesAttrNameParams {
+	o.ContentType = ContentType
 	return o
 }
 
 // WithEmbedded adds the embedded to the put name attributes attr name params
-func (o *PutNameAttributesAttrNameParams) WithEmbedded(embedded *string) *PutNameAttributesAttrNameParams {
-	o.Embedded = embedded
+func (o *PutNameAttributesAttrNameParams) WithEmbedded(Embedded *string) *PutNameAttributesAttrNameParams {
+	o.Embedded = Embedded
 	return o
 }
 
 // WithAttrName adds the attrName to the put name attributes attr name params
-func (o *PutNameAttributesAttrNameParams) WithAttrName(attrName *string) *PutNameAttributesAttrNameParams {
-	o.AttrName = attrName
+func (o *PutNameAttributesAttrNameParams) WithAttrName(AttrName *string) *PutNameAttributesAttrNameParams {
+	o.AttrName = AttrName
 	return o
 }
 
 // WithName adds the name to the put name attributes attr name params
-func (o *PutNameAttributesAttrNameParams) WithName(name *string) *PutNameAttributesAttrNameParams {
-	o.Name = name
+func (o *PutNameAttributesAttrNameParams) WithName(Name *string) *PutNameAttributesAttrNameParams {
+	o.Name = Name
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *PutNameAttributesAttrNameParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *PutNameAttributesAttrNameParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Accept != nil {

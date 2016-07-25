@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewDeleteAttributeParams creates a new DeleteAttributeParams object
 // with the default values initialized.
 func NewDeleteAttributeParams() *DeleteAttributeParams {
 	var ()
-	return &DeleteAttributeParams{}
+	return &DeleteAttributeParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewDeleteAttributeParamsWithTimeout creates a new DeleteAttributeParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewDeleteAttributeParamsWithTimeout(timeout time.Duration) *DeleteAttributeParams {
+	var ()
+	return &DeleteAttributeParams{
+
+		timeout: timeout,
+	}
 }
 
 /*DeleteAttributeParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type DeleteAttributeParams struct {
 
 	/*AttrName*/
 	AttrName *string
+
+	timeout time.Duration
 }
 
 // WithAttrName adds the attrName to the delete attribute params
-func (o *DeleteAttributeParams) WithAttrName(attrName *string) *DeleteAttributeParams {
-	o.AttrName = attrName
+func (o *DeleteAttributeParams) WithAttrName(AttrName *string) *DeleteAttributeParams {
+	o.AttrName = AttrName
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *DeleteAttributeParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *DeleteAttributeParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.AttrName != nil {

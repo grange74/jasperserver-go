@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetSpecificAttributeParams creates a new GetSpecificAttributeParams object
 // with the default values initialized.
 func NewGetSpecificAttributeParams() *GetSpecificAttributeParams {
 	var ()
-	return &GetSpecificAttributeParams{}
+	return &GetSpecificAttributeParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetSpecificAttributeParamsWithTimeout creates a new GetSpecificAttributeParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetSpecificAttributeParamsWithTimeout(timeout time.Duration) *GetSpecificAttributeParams {
+	var ()
+	return &GetSpecificAttributeParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetSpecificAttributeParams contains all the parameters to send to the API endpoint
@@ -28,29 +44,32 @@ type GetSpecificAttributeParams struct {
 	Embedded *string
 	/*AttrName*/
 	AttrName *string
+
+	timeout time.Duration
 }
 
 // WithAccept adds the accept to the get specific attribute params
-func (o *GetSpecificAttributeParams) WithAccept(accept *string) *GetSpecificAttributeParams {
-	o.Accept = accept
+func (o *GetSpecificAttributeParams) WithAccept(Accept *string) *GetSpecificAttributeParams {
+	o.Accept = Accept
 	return o
 }
 
 // WithEmbedded adds the embedded to the get specific attribute params
-func (o *GetSpecificAttributeParams) WithEmbedded(embedded *string) *GetSpecificAttributeParams {
-	o.Embedded = embedded
+func (o *GetSpecificAttributeParams) WithEmbedded(Embedded *string) *GetSpecificAttributeParams {
+	o.Embedded = Embedded
 	return o
 }
 
 // WithAttrName adds the attrName to the get specific attribute params
-func (o *GetSpecificAttributeParams) WithAttrName(attrName *string) *GetSpecificAttributeParams {
-	o.AttrName = attrName
+func (o *GetSpecificAttributeParams) WithAttrName(AttrName *string) *GetSpecificAttributeParams {
+	o.AttrName = AttrName
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetSpecificAttributeParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetSpecificAttributeParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Accept != nil {

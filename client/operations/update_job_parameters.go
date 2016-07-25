@@ -4,18 +4,34 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewUpdateJobParams creates a new UpdateJobParams object
 // with the default values initialized.
 func NewUpdateJobParams() *UpdateJobParams {
 	var ()
-	return &UpdateJobParams{}
+	return &UpdateJobParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewUpdateJobParamsWithTimeout creates a new UpdateJobParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewUpdateJobParamsWithTimeout(timeout time.Duration) *UpdateJobParams {
+	var ()
+	return &UpdateJobParams{
+
+		timeout: timeout,
+	}
 }
 
 /*UpdateJobParams contains all the parameters to send to the API endpoint
@@ -25,17 +41,20 @@ type UpdateJobParams struct {
 
 	/*ID*/
 	ID *int64
+
+	timeout time.Duration
 }
 
 // WithID adds the id to the update job params
-func (o *UpdateJobParams) WithID(id *int64) *UpdateJobParams {
-	o.ID = id
+func (o *UpdateJobParams) WithID(ID *int64) *UpdateJobParams {
+	o.ID = ID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *UpdateJobParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *UpdateJobParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ID != nil {

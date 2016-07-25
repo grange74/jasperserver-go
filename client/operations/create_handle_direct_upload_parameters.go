@@ -4,11 +4,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewCreateHandleDirectUploadParams creates a new CreateHandleDirectUploadParams object
@@ -29,6 +32,31 @@ func NewCreateHandleDirectUploadParams() *CreateHandleDirectUploadParams {
 		IncludeServerSettings:   &includeServerSettingsDefault,
 		SkipUserUpdate:          &skipUserUpdateDefault,
 		Update:                  &updateDefault,
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewCreateHandleDirectUploadParamsWithTimeout creates a new CreateHandleDirectUploadParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewCreateHandleDirectUploadParamsWithTimeout(timeout time.Duration) *CreateHandleDirectUploadParams {
+	var (
+		includeAccessEventsDefault     bool = bool(false)
+		includeAuditEventsDefault      bool = bool(false)
+		includeMonitoringEventsDefault bool = bool(false)
+		includeServerSettingsDefault   bool = bool(false)
+		skipUserUpdateDefault          bool = bool(false)
+		updateDefault                  bool = bool(false)
+	)
+	return &CreateHandleDirectUploadParams{
+		IncludeAccessEvents:     &includeAccessEventsDefault,
+		IncludeAuditEvents:      &includeAuditEventsDefault,
+		IncludeMonitoringEvents: &includeMonitoringEventsDefault,
+		IncludeServerSettings:   &includeServerSettingsDefault,
+		SkipUserUpdate:          &skipUserUpdateDefault,
+		Update:                  &updateDefault,
+
+		timeout: timeout,
 	}
 }
 
@@ -49,47 +77,50 @@ type CreateHandleDirectUploadParams struct {
 	SkipUserUpdate *bool
 	/*Update*/
 	Update *bool
+
+	timeout time.Duration
 }
 
 // WithIncludeAccessEvents adds the includeAccessEvents to the create handle direct upload params
-func (o *CreateHandleDirectUploadParams) WithIncludeAccessEvents(includeAccessEvents *bool) *CreateHandleDirectUploadParams {
-	o.IncludeAccessEvents = includeAccessEvents
+func (o *CreateHandleDirectUploadParams) WithIncludeAccessEvents(IncludeAccessEvents *bool) *CreateHandleDirectUploadParams {
+	o.IncludeAccessEvents = IncludeAccessEvents
 	return o
 }
 
 // WithIncludeAuditEvents adds the includeAuditEvents to the create handle direct upload params
-func (o *CreateHandleDirectUploadParams) WithIncludeAuditEvents(includeAuditEvents *bool) *CreateHandleDirectUploadParams {
-	o.IncludeAuditEvents = includeAuditEvents
+func (o *CreateHandleDirectUploadParams) WithIncludeAuditEvents(IncludeAuditEvents *bool) *CreateHandleDirectUploadParams {
+	o.IncludeAuditEvents = IncludeAuditEvents
 	return o
 }
 
 // WithIncludeMonitoringEvents adds the includeMonitoringEvents to the create handle direct upload params
-func (o *CreateHandleDirectUploadParams) WithIncludeMonitoringEvents(includeMonitoringEvents *bool) *CreateHandleDirectUploadParams {
-	o.IncludeMonitoringEvents = includeMonitoringEvents
+func (o *CreateHandleDirectUploadParams) WithIncludeMonitoringEvents(IncludeMonitoringEvents *bool) *CreateHandleDirectUploadParams {
+	o.IncludeMonitoringEvents = IncludeMonitoringEvents
 	return o
 }
 
 // WithIncludeServerSettings adds the includeServerSettings to the create handle direct upload params
-func (o *CreateHandleDirectUploadParams) WithIncludeServerSettings(includeServerSettings *bool) *CreateHandleDirectUploadParams {
-	o.IncludeServerSettings = includeServerSettings
+func (o *CreateHandleDirectUploadParams) WithIncludeServerSettings(IncludeServerSettings *bool) *CreateHandleDirectUploadParams {
+	o.IncludeServerSettings = IncludeServerSettings
 	return o
 }
 
 // WithSkipUserUpdate adds the skipUserUpdate to the create handle direct upload params
-func (o *CreateHandleDirectUploadParams) WithSkipUserUpdate(skipUserUpdate *bool) *CreateHandleDirectUploadParams {
-	o.SkipUserUpdate = skipUserUpdate
+func (o *CreateHandleDirectUploadParams) WithSkipUserUpdate(SkipUserUpdate *bool) *CreateHandleDirectUploadParams {
+	o.SkipUserUpdate = SkipUserUpdate
 	return o
 }
 
 // WithUpdate adds the update to the create handle direct upload params
-func (o *CreateHandleDirectUploadParams) WithUpdate(update *bool) *CreateHandleDirectUploadParams {
-	o.Update = update
+func (o *CreateHandleDirectUploadParams) WithUpdate(Update *bool) *CreateHandleDirectUploadParams {
+	o.Update = Update
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *CreateHandleDirectUploadParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *CreateHandleDirectUploadParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.IncludeAccessEvents != nil {

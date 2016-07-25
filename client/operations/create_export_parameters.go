@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewCreateExportParams creates a new CreateExportParams object
 // with the default values initialized.
 func NewCreateExportParams() *CreateExportParams {
 	var ()
-	return &CreateExportParams{}
+	return &CreateExportParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewCreateExportParamsWithTimeout creates a new CreateExportParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewCreateExportParamsWithTimeout(timeout time.Duration) *CreateExportParams {
+	var ()
+	return &CreateExportParams{
+
+		timeout: timeout,
+	}
 }
 
 /*CreateExportParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type CreateExportParams struct {
 
 	/*ExecutionID*/
 	ExecutionID *string
+
+	timeout time.Duration
 }
 
 // WithExecutionID adds the executionId to the create export params
-func (o *CreateExportParams) WithExecutionID(executionId *string) *CreateExportParams {
-	o.ExecutionID = executionId
+func (o *CreateExportParams) WithExecutionID(ExecutionID *string) *CreateExportParams {
+	o.ExecutionID = ExecutionID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *CreateExportParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *CreateExportParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ExecutionID != nil {

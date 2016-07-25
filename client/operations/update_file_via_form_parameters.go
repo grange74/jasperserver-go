@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewUpdateFileViaFormParams creates a new UpdateFileViaFormParams object
 // with the default values initialized.
 func NewUpdateFileViaFormParams() *UpdateFileViaFormParams {
 	var ()
-	return &UpdateFileViaFormParams{}
+	return &UpdateFileViaFormParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewUpdateFileViaFormParamsWithTimeout creates a new UpdateFileViaFormParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewUpdateFileViaFormParamsWithTimeout(timeout time.Duration) *UpdateFileViaFormParams {
+	var ()
+	return &UpdateFileViaFormParams{
+
+		timeout: timeout,
+	}
 }
 
 /*UpdateFileViaFormParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type UpdateFileViaFormParams struct {
 
 	/*URI*/
 	URI *string
+
+	timeout time.Duration
 }
 
 // WithURI adds the uri to the update file via form params
-func (o *UpdateFileViaFormParams) WithURI(uri *string) *UpdateFileViaFormParams {
-	o.URI = uri
+func (o *UpdateFileViaFormParams) WithURI(URI *string) *UpdateFileViaFormParams {
+	o.URI = URI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *UpdateFileViaFormParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *UpdateFileViaFormParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.URI != nil {

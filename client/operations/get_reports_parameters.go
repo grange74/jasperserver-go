@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetReportsParams creates a new GetReportsParams object
 // with the default values initialized.
 func NewGetReportsParams() *GetReportsParams {
 	var ()
-	return &GetReportsParams{}
+	return &GetReportsParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetReportsParamsWithTimeout creates a new GetReportsParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetReportsParamsWithTimeout(timeout time.Duration) *GetReportsParams {
+	var ()
+	return &GetReportsParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetReportsParams contains all the parameters to send to the API endpoint
@@ -34,47 +50,50 @@ type GetReportsParams struct {
 	ReportURI *string
 	/*UserName*/
 	UserName *string
+
+	timeout time.Duration
 }
 
 // WithFireTimeFrom adds the fireTimeFrom to the get reports params
-func (o *GetReportsParams) WithFireTimeFrom(fireTimeFrom *string) *GetReportsParams {
-	o.FireTimeFrom = fireTimeFrom
+func (o *GetReportsParams) WithFireTimeFrom(FireTimeFrom *string) *GetReportsParams {
+	o.FireTimeFrom = FireTimeFrom
 	return o
 }
 
 // WithFireTimeTo adds the fireTimeTo to the get reports params
-func (o *GetReportsParams) WithFireTimeTo(fireTimeTo *string) *GetReportsParams {
-	o.FireTimeTo = fireTimeTo
+func (o *GetReportsParams) WithFireTimeTo(FireTimeTo *string) *GetReportsParams {
+	o.FireTimeTo = FireTimeTo
 	return o
 }
 
 // WithJobID adds the jobId to the get reports params
-func (o *GetReportsParams) WithJobID(jobId *string) *GetReportsParams {
-	o.JobID = jobId
+func (o *GetReportsParams) WithJobID(JobID *string) *GetReportsParams {
+	o.JobID = JobID
 	return o
 }
 
 // WithJobLabel adds the jobLabel to the get reports params
-func (o *GetReportsParams) WithJobLabel(jobLabel *string) *GetReportsParams {
-	o.JobLabel = jobLabel
+func (o *GetReportsParams) WithJobLabel(JobLabel *string) *GetReportsParams {
+	o.JobLabel = JobLabel
 	return o
 }
 
 // WithReportURI adds the reportUri to the get reports params
-func (o *GetReportsParams) WithReportURI(reportUri *string) *GetReportsParams {
-	o.ReportURI = reportUri
+func (o *GetReportsParams) WithReportURI(ReportURI *string) *GetReportsParams {
+	o.ReportURI = ReportURI
 	return o
 }
 
 // WithUserName adds the userName to the get reports params
-func (o *GetReportsParams) WithUserName(userName *string) *GetReportsParams {
-	o.UserName = userName
+func (o *GetReportsParams) WithUserName(UserName *string) *GetReportsParams {
+	o.UserName = UserName
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetReportsParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetReportsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.FireTimeFrom != nil {

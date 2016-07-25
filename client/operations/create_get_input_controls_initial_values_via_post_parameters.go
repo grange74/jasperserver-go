@@ -4,11 +4,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewCreateGetInputControlsInitialValuesViaPostParams creates a new CreateGetInputControlsInitialValuesViaPostParams object
@@ -19,6 +22,21 @@ func NewCreateGetInputControlsInitialValuesViaPostParams() *CreateGetInputContro
 	)
 	return &CreateGetInputControlsInitialValuesViaPostParams{
 		FreshData: &freshDataDefault,
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewCreateGetInputControlsInitialValuesViaPostParamsWithTimeout creates a new CreateGetInputControlsInitialValuesViaPostParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewCreateGetInputControlsInitialValuesViaPostParamsWithTimeout(timeout time.Duration) *CreateGetInputControlsInitialValuesViaPostParams {
+	var (
+		freshDataDefault bool = bool(false)
+	)
+	return &CreateGetInputControlsInitialValuesViaPostParams{
+		FreshData: &freshDataDefault,
+
+		timeout: timeout,
 	}
 }
 
@@ -31,23 +49,26 @@ type CreateGetInputControlsInitialValuesViaPostParams struct {
 	FreshData *bool
 	/*ReportUnitURI*/
 	ReportUnitURI *string
+
+	timeout time.Duration
 }
 
 // WithFreshData adds the freshData to the create get input controls initial values via post params
-func (o *CreateGetInputControlsInitialValuesViaPostParams) WithFreshData(freshData *bool) *CreateGetInputControlsInitialValuesViaPostParams {
-	o.FreshData = freshData
+func (o *CreateGetInputControlsInitialValuesViaPostParams) WithFreshData(FreshData *bool) *CreateGetInputControlsInitialValuesViaPostParams {
+	o.FreshData = FreshData
 	return o
 }
 
 // WithReportUnitURI adds the reportUnitUri to the create get input controls initial values via post params
-func (o *CreateGetInputControlsInitialValuesViaPostParams) WithReportUnitURI(reportUnitUri *string) *CreateGetInputControlsInitialValuesViaPostParams {
-	o.ReportUnitURI = reportUnitUri
+func (o *CreateGetInputControlsInitialValuesViaPostParams) WithReportUnitURI(ReportUnitURI *string) *CreateGetInputControlsInitialValuesViaPostParams {
+	o.ReportUnitURI = ReportUnitURI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *CreateGetInputControlsInitialValuesViaPostParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *CreateGetInputControlsInitialValuesViaPostParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.FreshData != nil {

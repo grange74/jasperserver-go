@@ -4,11 +4,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewCreateFileViaFormInRootParams creates a new CreateFileViaFormInRootParams object
@@ -19,6 +22,21 @@ func NewCreateFileViaFormInRootParams() *CreateFileViaFormInRootParams {
 	)
 	return &CreateFileViaFormInRootParams{
 		CreateFolders: &createFoldersDefault,
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewCreateFileViaFormInRootParamsWithTimeout creates a new CreateFileViaFormInRootParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewCreateFileViaFormInRootParamsWithTimeout(timeout time.Duration) *CreateFileViaFormInRootParams {
+	var (
+		createFoldersDefault bool = bool(true)
+	)
+	return &CreateFileViaFormInRootParams{
+		CreateFolders: &createFoldersDefault,
+
+		timeout: timeout,
 	}
 }
 
@@ -29,17 +47,20 @@ type CreateFileViaFormInRootParams struct {
 
 	/*CreateFolders*/
 	CreateFolders *bool
+
+	timeout time.Duration
 }
 
 // WithCreateFolders adds the createFolders to the create file via form in root params
-func (o *CreateFileViaFormInRootParams) WithCreateFolders(createFolders *bool) *CreateFileViaFormInRootParams {
-	o.CreateFolders = createFolders
+func (o *CreateFileViaFormInRootParams) WithCreateFolders(CreateFolders *bool) *CreateFileViaFormInRootParams {
+	o.CreateFolders = CreateFolders
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *CreateFileViaFormInRootParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *CreateFileViaFormInRootParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.CreateFolders != nil {

@@ -6,10 +6,9 @@ package operations
 import (
 	"fmt"
 
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/httpkit"
+	"github.com/go-openapi/runtime"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // GetReportExecutionStatusObjectReader is a Reader for the GetReportExecutionStatusObject structure.
@@ -18,7 +17,7 @@ type GetReportExecutionStatusObjectReader struct {
 }
 
 // ReadResponse reads a server response into the recieved o.
-func (o *GetReportExecutionStatusObjectReader) ReadResponse(response client.Response, consumer httpkit.Consumer) (interface{}, error) {
+func (o *GetReportExecutionStatusObjectReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
 	case 200:
@@ -29,7 +28,7 @@ func (o *GetReportExecutionStatusObjectReader) ReadResponse(response client.Resp
 		return result, nil
 
 	default:
-		return nil, client.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
 }
 
@@ -49,7 +48,7 @@ func (o *GetReportExecutionStatusObjectOK) Error() string {
 	return fmt.Sprintf("[GET /{executionId}/status][%d] getReportExecutionStatusObjectOK ", 200)
 }
 
-func (o *GetReportExecutionStatusObjectOK) readResponse(response client.Response, consumer httpkit.Consumer, formats strfmt.Registry) error {
+func (o *GetReportExecutionStatusObjectOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

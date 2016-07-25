@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetAttributesParams creates a new GetAttributesParams object
 // with the default values initialized.
 func NewGetAttributesParams() *GetAttributesParams {
 	var ()
-	return &GetAttributesParams{}
+	return &GetAttributesParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetAttributesParamsWithTimeout creates a new GetAttributesParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetAttributesParamsWithTimeout(timeout time.Duration) *GetAttributesParams {
+	var ()
+	return &GetAttributesParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetAttributesParams contains all the parameters to send to the API endpoint
@@ -28,29 +44,32 @@ type GetAttributesParams struct {
 	Embedded *string
 	/*Name*/
 	Name *string
+
+	timeout time.Duration
 }
 
 // WithAccept adds the accept to the get attributes params
-func (o *GetAttributesParams) WithAccept(accept *string) *GetAttributesParams {
-	o.Accept = accept
+func (o *GetAttributesParams) WithAccept(Accept *string) *GetAttributesParams {
+	o.Accept = Accept
 	return o
 }
 
 // WithEmbedded adds the embedded to the get attributes params
-func (o *GetAttributesParams) WithEmbedded(embedded *string) *GetAttributesParams {
-	o.Embedded = embedded
+func (o *GetAttributesParams) WithEmbedded(Embedded *string) *GetAttributesParams {
+	o.Embedded = Embedded
 	return o
 }
 
 // WithName adds the name to the get attributes params
-func (o *GetAttributesParams) WithName(name *string) *GetAttributesParams {
-	o.Name = name
+func (o *GetAttributesParams) WithName(Name *string) *GetAttributesParams {
+	o.Name = Name
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetAttributesParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetAttributesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Accept != nil {

@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewRemoveConnectionDetailsParams creates a new RemoveConnectionDetailsParams object
 // with the default values initialized.
 func NewRemoveConnectionDetailsParams() *RemoveConnectionDetailsParams {
 	var ()
-	return &RemoveConnectionDetailsParams{}
+	return &RemoveConnectionDetailsParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewRemoveConnectionDetailsParamsWithTimeout creates a new RemoveConnectionDetailsParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewRemoveConnectionDetailsParamsWithTimeout(timeout time.Duration) *RemoveConnectionDetailsParams {
+	var ()
+	return &RemoveConnectionDetailsParams{
+
+		timeout: timeout,
+	}
 }
 
 /*RemoveConnectionDetailsParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type RemoveConnectionDetailsParams struct {
 
 	/*UUID*/
 	UUID *string
+
+	timeout time.Duration
 }
 
 // WithUUID adds the uuid to the remove connection details params
-func (o *RemoveConnectionDetailsParams) WithUUID(uuid *string) *RemoveConnectionDetailsParams {
-	o.UUID = uuid
+func (o *RemoveConnectionDetailsParams) WithUUID(UUID *string) *RemoveConnectionDetailsParams {
+	o.UUID = UUID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *RemoveConnectionDetailsParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *RemoveConnectionDetailsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.UUID != nil {

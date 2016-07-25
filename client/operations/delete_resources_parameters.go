@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewDeleteResourcesParams creates a new DeleteResourcesParams object
 // with the default values initialized.
 func NewDeleteResourcesParams() *DeleteResourcesParams {
 	var ()
-	return &DeleteResourcesParams{}
+	return &DeleteResourcesParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewDeleteResourcesParamsWithTimeout creates a new DeleteResourcesParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewDeleteResourcesParamsWithTimeout(timeout time.Duration) *DeleteResourcesParams {
+	var ()
+	return &DeleteResourcesParams{
+
+		timeout: timeout,
+	}
 }
 
 /*DeleteResourcesParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type DeleteResourcesParams struct {
 
 	/*ResourceURI*/
 	ResourceURI *string
+
+	timeout time.Duration
 }
 
 // WithResourceURI adds the resourceUri to the delete resources params
-func (o *DeleteResourcesParams) WithResourceURI(resourceUri *string) *DeleteResourcesParams {
-	o.ResourceURI = resourceUri
+func (o *DeleteResourcesParams) WithResourceURI(ResourceURI *string) *DeleteResourcesParams {
+	o.ResourceURI = ResourceURI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *DeleteResourcesParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *DeleteResourcesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ResourceURI != nil {

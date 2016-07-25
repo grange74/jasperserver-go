@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetReportInputParametersParams creates a new GetReportInputParametersParams object
 // with the default values initialized.
 func NewGetReportInputParametersParams() *GetReportInputParametersParams {
 	var ()
-	return &GetReportInputParametersParams{}
+	return &GetReportInputParametersParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetReportInputParametersParamsWithTimeout creates a new GetReportInputParametersParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetReportInputParametersParamsWithTimeout(timeout time.Duration) *GetReportInputParametersParams {
+	var ()
+	return &GetReportInputParametersParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetReportInputParametersParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type GetReportInputParametersParams struct {
 
 	/*ReportUnitURI*/
 	ReportUnitURI *string
+
+	timeout time.Duration
 }
 
 // WithReportUnitURI adds the reportUnitUri to the get report input parameters params
-func (o *GetReportInputParametersParams) WithReportUnitURI(reportUnitUri *string) *GetReportInputParametersParams {
-	o.ReportUnitURI = reportUnitUri
+func (o *GetReportInputParametersParams) WithReportUnitURI(ReportUnitURI *string) *GetReportInputParametersParams {
+	o.ReportUnitURI = ReportUnitURI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetReportInputParametersParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetReportInputParametersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ReportUnitURI != nil {

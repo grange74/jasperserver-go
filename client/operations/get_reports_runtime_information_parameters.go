@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetReportsRuntimeInformationParams creates a new GetReportsRuntimeInformationParams object
 // with the default values initialized.
 func NewGetReportsRuntimeInformationParams() *GetReportsRuntimeInformationParams {
 	var ()
-	return &GetReportsRuntimeInformationParams{}
+	return &GetReportsRuntimeInformationParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetReportsRuntimeInformationParamsWithTimeout creates a new GetReportsRuntimeInformationParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetReportsRuntimeInformationParamsWithTimeout(timeout time.Duration) *GetReportsRuntimeInformationParams {
+	var ()
+	return &GetReportsRuntimeInformationParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetReportsRuntimeInformationParams contains all the parameters to send to the API endpoint
@@ -34,47 +50,50 @@ type GetReportsRuntimeInformationParams struct {
 	ReportURI *string
 	/*UserName*/
 	UserName *string
+
+	timeout time.Duration
 }
 
 // WithFireTimeFrom adds the fireTimeFrom to the get reports runtime information params
-func (o *GetReportsRuntimeInformationParams) WithFireTimeFrom(fireTimeFrom *string) *GetReportsRuntimeInformationParams {
-	o.FireTimeFrom = fireTimeFrom
+func (o *GetReportsRuntimeInformationParams) WithFireTimeFrom(FireTimeFrom *string) *GetReportsRuntimeInformationParams {
+	o.FireTimeFrom = FireTimeFrom
 	return o
 }
 
 // WithFireTimeTo adds the fireTimeTo to the get reports runtime information params
-func (o *GetReportsRuntimeInformationParams) WithFireTimeTo(fireTimeTo *string) *GetReportsRuntimeInformationParams {
-	o.FireTimeTo = fireTimeTo
+func (o *GetReportsRuntimeInformationParams) WithFireTimeTo(FireTimeTo *string) *GetReportsRuntimeInformationParams {
+	o.FireTimeTo = FireTimeTo
 	return o
 }
 
 // WithJobID adds the jobId to the get reports runtime information params
-func (o *GetReportsRuntimeInformationParams) WithJobID(jobId *string) *GetReportsRuntimeInformationParams {
-	o.JobID = jobId
+func (o *GetReportsRuntimeInformationParams) WithJobID(JobID *string) *GetReportsRuntimeInformationParams {
+	o.JobID = JobID
 	return o
 }
 
 // WithJobLabel adds the jobLabel to the get reports runtime information params
-func (o *GetReportsRuntimeInformationParams) WithJobLabel(jobLabel *string) *GetReportsRuntimeInformationParams {
-	o.JobLabel = jobLabel
+func (o *GetReportsRuntimeInformationParams) WithJobLabel(JobLabel *string) *GetReportsRuntimeInformationParams {
+	o.JobLabel = JobLabel
 	return o
 }
 
 // WithReportURI adds the reportUri to the get reports runtime information params
-func (o *GetReportsRuntimeInformationParams) WithReportURI(reportUri *string) *GetReportsRuntimeInformationParams {
-	o.ReportURI = reportUri
+func (o *GetReportsRuntimeInformationParams) WithReportURI(ReportURI *string) *GetReportsRuntimeInformationParams {
+	o.ReportURI = ReportURI
 	return o
 }
 
 // WithUserName adds the userName to the get reports runtime information params
-func (o *GetReportsRuntimeInformationParams) WithUserName(userName *string) *GetReportsRuntimeInformationParams {
-	o.UserName = userName
+func (o *GetReportsRuntimeInformationParams) WithUserName(UserName *string) *GetReportsRuntimeInformationParams {
+	o.UserName = UserName
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetReportsRuntimeInformationParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetReportsRuntimeInformationParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.FireTimeFrom != nil {

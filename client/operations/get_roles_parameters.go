@@ -4,18 +4,34 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetRolesParams creates a new GetRolesParams object
 // with the default values initialized.
 func NewGetRolesParams() *GetRolesParams {
 	var ()
-	return &GetRolesParams{}
+	return &GetRolesParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetRolesParamsWithTimeout creates a new GetRolesParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetRolesParamsWithTimeout(timeout time.Duration) *GetRolesParams {
+	var ()
+	return &GetRolesParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetRolesParams contains all the parameters to send to the API endpoint
@@ -41,65 +57,68 @@ type GetRolesParams struct {
 	SubOrgID *string
 	/*User*/
 	User *string
+
+	timeout time.Duration
 }
 
 // WithHasAllUsers adds the hasAllUsers to the get roles params
-func (o *GetRolesParams) WithHasAllUsers(hasAllUsers *bool) *GetRolesParams {
-	o.HasAllUsers = hasAllUsers
+func (o *GetRolesParams) WithHasAllUsers(HasAllUsers *bool) *GetRolesParams {
+	o.HasAllUsers = HasAllUsers
 	return o
 }
 
 // WithIncludeSubOrgs adds the includeSubOrgs to the get roles params
-func (o *GetRolesParams) WithIncludeSubOrgs(includeSubOrgs *bool) *GetRolesParams {
-	o.IncludeSubOrgs = includeSubOrgs
+func (o *GetRolesParams) WithIncludeSubOrgs(IncludeSubOrgs *bool) *GetRolesParams {
+	o.IncludeSubOrgs = IncludeSubOrgs
 	return o
 }
 
 // WithLimit adds the limit to the get roles params
-func (o *GetRolesParams) WithLimit(limit *int32) *GetRolesParams {
-	o.Limit = limit
+func (o *GetRolesParams) WithLimit(Limit *int32) *GetRolesParams {
+	o.Limit = Limit
 	return o
 }
 
 // WithMaxRecords adds the maxRecords to the get roles params
-func (o *GetRolesParams) WithMaxRecords(maxRecords *int32) *GetRolesParams {
-	o.MaxRecords = maxRecords
+func (o *GetRolesParams) WithMaxRecords(MaxRecords *int32) *GetRolesParams {
+	o.MaxRecords = MaxRecords
 	return o
 }
 
 // WithOffset adds the offset to the get roles params
-func (o *GetRolesParams) WithOffset(offset *int32) *GetRolesParams {
-	o.Offset = offset
+func (o *GetRolesParams) WithOffset(Offset *int32) *GetRolesParams {
+	o.Offset = Offset
 	return o
 }
 
 // WithQ adds the q to the get roles params
-func (o *GetRolesParams) WithQ(q *string) *GetRolesParams {
-	o.Q = q
+func (o *GetRolesParams) WithQ(Q *string) *GetRolesParams {
+	o.Q = Q
 	return o
 }
 
 // WithSearch adds the search to the get roles params
-func (o *GetRolesParams) WithSearch(search *string) *GetRolesParams {
-	o.Search = search
+func (o *GetRolesParams) WithSearch(Search *string) *GetRolesParams {
+	o.Search = Search
 	return o
 }
 
 // WithSubOrgID adds the subOrgId to the get roles params
-func (o *GetRolesParams) WithSubOrgID(subOrgId *string) *GetRolesParams {
-	o.SubOrgID = subOrgId
+func (o *GetRolesParams) WithSubOrgID(SubOrgID *string) *GetRolesParams {
+	o.SubOrgID = SubOrgID
 	return o
 }
 
 // WithUser adds the user to the get roles params
-func (o *GetRolesParams) WithUser(user *string) *GetRolesParams {
-	o.User = user
+func (o *GetRolesParams) WithUser(User *string) *GetRolesParams {
+	o.User = User
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetRolesParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetRolesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.HasAllUsers != nil {

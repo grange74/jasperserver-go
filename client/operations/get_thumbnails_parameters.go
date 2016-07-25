@@ -4,18 +4,34 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetThumbnailsParams creates a new GetThumbnailsParams object
 // with the default values initialized.
 func NewGetThumbnailsParams() *GetThumbnailsParams {
 	var ()
-	return &GetThumbnailsParams{}
+	return &GetThumbnailsParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetThumbnailsParamsWithTimeout creates a new GetThumbnailsParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetThumbnailsParamsWithTimeout(timeout time.Duration) *GetThumbnailsParams {
+	var ()
+	return &GetThumbnailsParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetThumbnailsParams contains all the parameters to send to the API endpoint
@@ -29,29 +45,32 @@ type GetThumbnailsParams struct {
 	DefaultAllowed *bool
 	/*URI*/
 	URI *string
+
+	timeout time.Duration
 }
 
 // WithAccept adds the accept to the get thumbnails params
-func (o *GetThumbnailsParams) WithAccept(accept *string) *GetThumbnailsParams {
-	o.Accept = accept
+func (o *GetThumbnailsParams) WithAccept(Accept *string) *GetThumbnailsParams {
+	o.Accept = Accept
 	return o
 }
 
 // WithDefaultAllowed adds the defaultAllowed to the get thumbnails params
-func (o *GetThumbnailsParams) WithDefaultAllowed(defaultAllowed *bool) *GetThumbnailsParams {
-	o.DefaultAllowed = defaultAllowed
+func (o *GetThumbnailsParams) WithDefaultAllowed(DefaultAllowed *bool) *GetThumbnailsParams {
+	o.DefaultAllowed = DefaultAllowed
 	return o
 }
 
 // WithURI adds the uri to the get thumbnails params
-func (o *GetThumbnailsParams) WithURI(uri *string) *GetThumbnailsParams {
-	o.URI = uri
+func (o *GetThumbnailsParams) WithURI(URI *string) *GetThumbnailsParams {
+	o.URI = URI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetThumbnailsParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetThumbnailsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.Accept != nil {

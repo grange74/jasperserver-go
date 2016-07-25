@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewUpdateCancelReportExecutionParams creates a new UpdateCancelReportExecutionParams object
 // with the default values initialized.
 func NewUpdateCancelReportExecutionParams() *UpdateCancelReportExecutionParams {
 	var ()
-	return &UpdateCancelReportExecutionParams{}
+	return &UpdateCancelReportExecutionParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewUpdateCancelReportExecutionParamsWithTimeout creates a new UpdateCancelReportExecutionParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewUpdateCancelReportExecutionParamsWithTimeout(timeout time.Duration) *UpdateCancelReportExecutionParams {
+	var ()
+	return &UpdateCancelReportExecutionParams{
+
+		timeout: timeout,
+	}
 }
 
 /*UpdateCancelReportExecutionParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type UpdateCancelReportExecutionParams struct {
 
 	/*ExecutionID*/
 	ExecutionID *string
+
+	timeout time.Duration
 }
 
 // WithExecutionID adds the executionId to the update cancel report execution params
-func (o *UpdateCancelReportExecutionParams) WithExecutionID(executionId *string) *UpdateCancelReportExecutionParams {
-	o.ExecutionID = executionId
+func (o *UpdateCancelReportExecutionParams) WithExecutionID(ExecutionID *string) *UpdateCancelReportExecutionParams {
+	o.ExecutionID = ExecutionID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *UpdateCancelReportExecutionParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *UpdateCancelReportExecutionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ExecutionID != nil {

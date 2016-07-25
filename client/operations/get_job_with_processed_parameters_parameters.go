@@ -4,18 +4,34 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetJobWithProcessedParametersParams creates a new GetJobWithProcessedParametersParams object
 // with the default values initialized.
 func NewGetJobWithProcessedParametersParams() *GetJobWithProcessedParametersParams {
 	var ()
-	return &GetJobWithProcessedParametersParams{}
+	return &GetJobWithProcessedParametersParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetJobWithProcessedParametersParamsWithTimeout creates a new GetJobWithProcessedParametersParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetJobWithProcessedParametersParamsWithTimeout(timeout time.Duration) *GetJobWithProcessedParametersParams {
+	var ()
+	return &GetJobWithProcessedParametersParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetJobWithProcessedParametersParams contains all the parameters to send to the API endpoint
@@ -25,17 +41,20 @@ type GetJobWithProcessedParametersParams struct {
 
 	/*ID*/
 	ID *int64
+
+	timeout time.Duration
 }
 
 // WithID adds the id to the get job with processed parameters params
-func (o *GetJobWithProcessedParametersParams) WithID(id *int64) *GetJobWithProcessedParametersParams {
-	o.ID = id
+func (o *GetJobWithProcessedParametersParams) WithID(ID *int64) *GetJobWithProcessedParametersParams {
+	o.ID = ID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetJobWithProcessedParametersParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetJobWithProcessedParametersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ID != nil {

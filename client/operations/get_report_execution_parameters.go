@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetReportExecutionParams creates a new GetReportExecutionParams object
 // with the default values initialized.
 func NewGetReportExecutionParams() *GetReportExecutionParams {
 	var ()
-	return &GetReportExecutionParams{}
+	return &GetReportExecutionParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetReportExecutionParamsWithTimeout creates a new GetReportExecutionParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetReportExecutionParamsWithTimeout(timeout time.Duration) *GetReportExecutionParams {
+	var ()
+	return &GetReportExecutionParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetReportExecutionParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type GetReportExecutionParams struct {
 
 	/*ExecutionID*/
 	ExecutionID *string
+
+	timeout time.Duration
 }
 
 // WithExecutionID adds the executionId to the get report execution params
-func (o *GetReportExecutionParams) WithExecutionID(executionId *string) *GetReportExecutionParams {
-	o.ExecutionID = executionId
+func (o *GetReportExecutionParams) WithExecutionID(ExecutionID *string) *GetReportExecutionParams {
+	o.ExecutionID = ExecutionID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetReportExecutionParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetReportExecutionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ExecutionID != nil {

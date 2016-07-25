@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewGetConnectionDetailsParams creates a new GetConnectionDetailsParams object
 // with the default values initialized.
 func NewGetConnectionDetailsParams() *GetConnectionDetailsParams {
 	var ()
-	return &GetConnectionDetailsParams{}
+	return &GetConnectionDetailsParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewGetConnectionDetailsParamsWithTimeout creates a new GetConnectionDetailsParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewGetConnectionDetailsParamsWithTimeout(timeout time.Duration) *GetConnectionDetailsParams {
+	var ()
+	return &GetConnectionDetailsParams{
+
+		timeout: timeout,
+	}
 }
 
 /*GetConnectionDetailsParams contains all the parameters to send to the API endpoint
@@ -24,17 +40,20 @@ type GetConnectionDetailsParams struct {
 
 	/*UUID*/
 	UUID *string
+
+	timeout time.Duration
 }
 
 // WithUUID adds the uuid to the get connection details params
-func (o *GetConnectionDetailsParams) WithUUID(uuid *string) *GetConnectionDetailsParams {
-	o.UUID = uuid
+func (o *GetConnectionDetailsParams) WithUUID(UUID *string) *GetConnectionDetailsParams {
+	o.UUID = UUID
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetConnectionDetailsParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *GetConnectionDetailsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.UUID != nil {

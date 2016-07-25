@@ -4,11 +4,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
-	"github.com/go-swagger/go-swagger/swag"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewUpdateJobsParams creates a new UpdateJobsParams object
@@ -19,6 +22,21 @@ func NewUpdateJobsParams() *UpdateJobsParams {
 	)
 	return &UpdateJobsParams{
 		ReplaceTriggerIgnoreType: &replaceTriggerIgnoreTypeDefault,
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewUpdateJobsParamsWithTimeout creates a new UpdateJobsParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewUpdateJobsParamsWithTimeout(timeout time.Duration) *UpdateJobsParams {
+	var (
+		replaceTriggerIgnoreTypeDefault bool = bool(false)
+	)
+	return &UpdateJobsParams{
+		ReplaceTriggerIgnoreType: &replaceTriggerIgnoreTypeDefault,
+
+		timeout: timeout,
 	}
 }
 
@@ -31,23 +49,26 @@ type UpdateJobsParams struct {
 	ID *string
 	/*ReplaceTriggerIgnoreType*/
 	ReplaceTriggerIgnoreType *bool
+
+	timeout time.Duration
 }
 
 // WithID adds the id to the update jobs params
-func (o *UpdateJobsParams) WithID(id *string) *UpdateJobsParams {
-	o.ID = id
+func (o *UpdateJobsParams) WithID(ID *string) *UpdateJobsParams {
+	o.ID = ID
 	return o
 }
 
 // WithReplaceTriggerIgnoreType adds the replaceTriggerIgnoreType to the update jobs params
-func (o *UpdateJobsParams) WithReplaceTriggerIgnoreType(replaceTriggerIgnoreType *bool) *UpdateJobsParams {
-	o.ReplaceTriggerIgnoreType = replaceTriggerIgnoreType
+func (o *UpdateJobsParams) WithReplaceTriggerIgnoreType(ReplaceTriggerIgnoreType *bool) *UpdateJobsParams {
+	o.ReplaceTriggerIgnoreType = ReplaceTriggerIgnoreType
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *UpdateJobsParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *UpdateJobsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.ID != nil {

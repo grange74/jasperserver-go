@@ -4,17 +4,33 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	"github.com/go-swagger/go-swagger/errors"
+	"time"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
+	cr "github.com/go-openapi/runtime/client"
+
+	strfmt "github.com/go-openapi/strfmt"
 )
 
 // NewCreateGetReportInputParametersForSpecifiedInputControlsViaPostParams creates a new CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams object
 // with the default values initialized.
 func NewCreateGetReportInputParametersForSpecifiedInputControlsViaPostParams() *CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams {
 	var ()
-	return &CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams{}
+	return &CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams{
+
+		timeout: cr.DefaultTimeout,
+	}
+}
+
+// NewCreateGetReportInputParametersForSpecifiedInputControlsViaPostParamsWithTimeout creates a new CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams object
+// with the default values initialized, and the ability to set a timeout on a request
+func NewCreateGetReportInputParametersForSpecifiedInputControlsViaPostParamsWithTimeout(timeout time.Duration) *CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams {
+	var ()
+	return &CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams{
+
+		timeout: timeout,
+	}
 }
 
 /*CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams contains all the parameters to send to the API endpoint
@@ -26,23 +42,26 @@ type CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams struct
 	InputControlIds *string
 	/*ReportUnitURI*/
 	ReportUnitURI *string
+
+	timeout time.Duration
 }
 
 // WithInputControlIds adds the inputControlIds to the create get report input parameters for specified input controls via post params
-func (o *CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams) WithInputControlIds(inputControlIds *string) *CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams {
-	o.InputControlIds = inputControlIds
+func (o *CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams) WithInputControlIds(InputControlIds *string) *CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams {
+	o.InputControlIds = InputControlIds
 	return o
 }
 
 // WithReportUnitURI adds the reportUnitUri to the create get report input parameters for specified input controls via post params
-func (o *CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams) WithReportUnitURI(reportUnitUri *string) *CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams {
-	o.ReportUnitURI = reportUnitUri
+func (o *CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams) WithReportUnitURI(ReportUnitURI *string) *CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams {
+	o.ReportUnitURI = ReportUnitURI
 	return o
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams) WriteToRequest(r client.Request, reg strfmt.Registry) error {
+func (o *CreateGetReportInputParametersForSpecifiedInputControlsViaPostParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
+	r.SetTimeout(o.timeout)
 	var res []error
 
 	if o.InputControlIds != nil {

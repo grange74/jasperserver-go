@@ -4,10 +4,10 @@ package client
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-swagger/go-swagger/client"
-	httptransport "github.com/go-swagger/go-swagger/httpkit/client"
+	"github.com/go-openapi/runtime"
+	httptransport "github.com/go-openapi/runtime/client"
 
-	strfmt "github.com/go-swagger/go-swagger/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/retrievercommunications/jasperserver-go/client/operations"
 )
@@ -25,7 +25,7 @@ func NewHTTPClient(formats strfmt.Registry) *Jasperserver {
 }
 
 // New creates a new jasperserver client
-func New(transport client.Transport, formats strfmt.Registry) *Jasperserver {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) *Jasperserver {
 	cli := new(Jasperserver)
 	cli.Transport = transport
 
@@ -38,11 +38,11 @@ func New(transport client.Transport, formats strfmt.Registry) *Jasperserver {
 type Jasperserver struct {
 	Operations *operations.Client
 
-	Transport client.Transport
+	Transport runtime.ClientTransport
 }
 
 // SetTransport changes the transport on the client and all its subresources
-func (c *Jasperserver) SetTransport(transport client.Transport) {
+func (c *Jasperserver) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 
 	c.Operations.SetTransport(transport)
