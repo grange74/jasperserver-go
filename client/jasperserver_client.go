@@ -9,7 +9,7 @@ import (
 
 	strfmt "github.com/go-swagger/go-swagger/strfmt"
 
-	"github.com/retrievercommunications/jasperserver-go-client/client/operations"
+	"github.com/retrievercommunications/jasperserver-go/client/operations"
 )
 
 // Default jasperserver HTTP client.
@@ -20,7 +20,7 @@ func NewHTTPClient(formats strfmt.Registry) *Jasperserver {
 	if formats == nil {
 		formats = strfmt.Default
 	}
-	transport := httptransport.New("localhost:8080", "/", []string{"http"})
+	transport := httptransport.New("localhost:8080", "/jasperserver/rest_v2/", []string{"http"})
 	return New(transport, formats)
 }
 
